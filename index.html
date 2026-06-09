@@ -1,0 +1,2298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI & Machine Learning — Complete Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #09090f;
+  --surface: #12121e;
+  --surface2: #1a1a2e;
+  --surface3: #1e2040;
+  --border: #2a2a45;
+  --border2: #333360;
+  --p: #7c6df0;       /* purple */
+  --p2: #a99cf5;
+  --cyan: #22d9c5;
+  --pink: #f065a4;
+  --amber: #f5c542;
+  --green: #3ddc84;
+  --red: #ff6b6b;
+  --text: #e2e4f0;
+  --muted: #6b6f90;
+  --dim: #3a3d5c;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: linear-gradient(180deg, #0d0d1f 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 72px 24px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content:'';
+  position:absolute; inset:0;
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(124,109,240,.18), transparent);
+  pointer-events:none;
+}
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(124,109,240,.12);
+  border: 1px solid rgba(124,109,240,.35);
+  color: var(--p2);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 99px; margin-bottom: 22px;
+}
+.site-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem,5vw,3.5rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff 0%, #a99cf5 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2; margin-bottom: 14px;
+}
+.site-header p {
+  color: var(--muted); font-size:.95rem; max-width:580px; margin:0 auto 32px;
+}
+.toc {
+  display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+  max-width: 860px; margin: 0 auto;
+}
+.toc a {
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--muted); font-size: 12px; padding: 5px 14px;
+  border-radius: 99px; text-decoration: none; transition: .2s;
+  white-space: nowrap;
+}
+.toc a:hover { border-color: var(--p); color: var(--p2); }
+
+/* ── LAYOUT ── */
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 22px; }
+
+/* ── SECTION ── */
+.sec {
+  padding: 64px 0 52px;
+  border-bottom: 1px solid var(--border);
+}
+.sec:last-child { border-bottom: none; }
+
+.sec-head {
+  display: flex; align-items: flex-start; gap: 16px;
+  margin-bottom: 32px;
+}
+.sec-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; color: var(--p); background: rgba(124,109,240,.1);
+  border: 1px solid rgba(124,109,240,.25); padding: 3px 10px; border-radius: 4px;
+  margin-top: 7px; flex-shrink: 0; letter-spacing: .06em;
+}
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem,3vw,2rem);
+  font-weight: 700; line-height: 1.2;
+}
+.sec-title em { font-style: italic; color: var(--p2); }
+.sec-title span { color: var(--cyan); font-style: normal; }
+
+/* ── TYPOGRAPHY ── */
+p { color: #b8bcd4; margin-bottom: 14px; }
+h3 {
+  font-size: 1.05rem; font-weight: 600; color: var(--text);
+  margin: 30px 0 12px; padding-left: 14px;
+  border-left: 3px solid var(--p); letter-spacing: .01em;
+}
+h4 { font-size: .95rem; font-weight: 600; color: var(--p2); margin: 18px 0 8px; }
+strong { color: var(--text); font-weight: 600; }
+em { color: var(--p2); font-style: italic; }
+
+/* ── CARDS ── */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 22px 24px; margin-bottom: 16px;
+  position: relative; overflow: hidden;
+}
+.card::after {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background: linear-gradient(90deg,var(--p),transparent);
+}
+.card.c-cyan::after  { background: linear-gradient(90deg,var(--cyan),transparent); }
+.card.c-pink::after  { background: linear-gradient(90deg,var(--pink),transparent); }
+.card.c-amber::after { background: linear-gradient(90deg,var(--amber),transparent); }
+.card.c-green::after { background: linear-gradient(90deg,var(--green),transparent); }
+.card.c-red::after   { background: linear-gradient(90deg,var(--red),transparent); }
+
+.card-title { font-weight: 700; font-size: 1rem; margin-bottom: 10px; color: #fff; }
+.card p { font-size: .92rem; margin-bottom: 8px; }
+
+/* ── GRID ── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0; }
+.g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 18px 0; }
+@media(max-width:680px){ .g2,.g3 { grid-template-columns:1fr; } }
+
+/* ── TABLE ── */
+.tbl-wrap { overflow-x: auto; margin: 20px 0; border-radius: 10px; border: 1px solid var(--border); }
+table { width:100%; border-collapse: collapse; }
+thead tr { background: var(--surface2); }
+th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--muted); padding: 13px 16px; text-align: left;
+  border-bottom: 1px solid var(--border2);
+}
+td { padding: 11px 16px; border-bottom: 1px solid var(--border); font-size: .9rem; color: #b8bcd4; vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(255,255,255,.02); }
+
+/* ── EXAMPLE BOX ── */
+.eg {
+  background: rgba(34,217,197,.05); border: 1px solid rgba(34,217,197,.2);
+  border-left: 3px solid var(--cyan);
+  border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 14px 0; font-size: .91rem;
+}
+.eg strong { color: var(--cyan); font-size: .75rem; font-family: 'JetBrains Mono',monospace; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:5px; }
+
+/* ── NOTE ── */
+.note {
+  background: rgba(245,197,66,.05); border: 1px solid rgba(245,197,66,.2);
+  border-radius: 8px; padding: 12px 16px; font-size:.9rem; color:#d4b84a; margin:14px 0;
+}
+.note::before { content:'💡 '; }
+
+/* ── WARN ── */
+.warn {
+  background: rgba(255,107,107,.06); border: 1px solid rgba(255,107,107,.2);
+  border-radius: 8px; padding: 12px 16px; font-size:.9rem; color:#e07a7a; margin:14px 0;
+}
+.warn::before { content:'⚠️ '; }
+
+/* ── INLINE CODE ── */
+code {
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--surface2); border: 1px solid var(--border);
+  padding: 1px 7px; border-radius: 4px; font-size: .83em; color: var(--p2);
+}
+
+/* ── LIST ── */
+ul.sl { list-style: none; padding: 0; margin: 10px 0 16px; }
+ul.sl li {
+  padding: 7px 0 7px 20px; position: relative;
+  border-bottom: 1px solid var(--border); color: #b8bcd4; font-size: .93rem;
+}
+ul.sl li:last-child { border-bottom: none; }
+ul.sl li::before { content:'▸'; position:absolute; left:0; color:var(--p); }
+
+/* ── PIPELINE ── */
+.pipe { display:flex; flex-wrap:wrap; gap:0; margin:20px 0; }
+.pipe-step {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 16px 18px; flex:1; min-width:130px; position:relative;
+  text-align:center; font-size:.82rem;
+}
+.pipe-step:first-child { border-radius: 8px 0 0 8px; }
+.pipe-step:last-child  { border-radius: 0 8px 8px 0; }
+.pipe-step:not(:last-child)::after {
+  content:'→'; position:absolute; right:-10px; top:50%; transform:translateY(-50%);
+  color:var(--p); font-size:1rem; z-index:2; background:var(--bg); padding:0 2px;
+}
+.pipe-num { font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--p); display:block; margin-bottom:3px; }
+.pipe-label { font-weight:600; font-size:.8rem; display:block; }
+
+/* ── SPLIT BAR ── */
+.split { display:flex; gap:4px; margin:18px 0; align-items:center; }
+.sbar {
+  height:46px; display:flex; align-items:center; justify-content:center;
+  font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700;
+  border-radius:6px; transition:.3s;
+}
+
+/* ── FLOW ── */
+.flow { display:flex; flex-direction:column; gap:0; margin:18px 0; }
+.flow-row { display:flex; align-items:center; gap:0; }
+.flow-box {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:8px; padding:13px 18px; font-size:.86rem; flex:1; text-align:center;
+}
+.flow-arrow { color:var(--p); font-size:1.3rem; padding:0 10px; flex-shrink:0; }
+.flow-down { text-align:center; color:var(--p); font-size:1.3rem; padding:3px 0; }
+
+/* ── CHART/SVG ── */
+.chart-box {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:12px; padding:24px 26px; margin:20px 0;
+}
+.chart-label {
+  font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:18px;
+}
+svg.ch { width:100%; overflow:visible; }
+
+/* ── FORMULA ── */
+.formula {
+  background: var(--surface2); border: 1px solid var(--border2);
+  border-radius: 8px; padding: 12px 18px; margin: 12px 0;
+  font-family: 'JetBrains Mono', monospace; font-size: .9rem; color: var(--p2);
+}
+
+/* ── STEP BLOCK ── */
+.step-block {
+  display:flex; gap:16px; margin-bottom:22px; align-items:flex-start;
+}
+.step-num {
+  min-width:36px; height:36px; border-radius:50%;
+  background: rgba(124,109,240,.15); border:1px solid rgba(124,109,240,.35);
+  color:var(--p); font-weight:700; font-size:.9rem;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px;
+}
+.step-body h4 { margin-top:2px; }
+
+/* ── HIGHLIGHT ── */
+.hl-p    { color:var(--p2); font-weight:600; }
+.hl-cyan { color:var(--cyan); font-weight:600; }
+.hl-pink { color:var(--pink); font-weight:600; }
+.hl-a    { color:var(--amber); font-weight:600; }
+.hl-g    { color:var(--green); font-weight:600; }
+
+/* ── FOOTER ── */
+footer {
+  text-align:center; padding:40px 24px 60px;
+  color:var(--dim); font-family:'JetBrains Mono',monospace; font-size:.78rem;
+  border-top:1px solid var(--border);
+}
+.back { display:inline-block; margin-top:32px; color:var(--muted); font-size:.82rem;
+  text-decoration:none; border:1px solid var(--border); padding:7px 20px; border-radius:99px; transition:.2s; }
+.back:hover { border-color:var(--p); color:var(--p2); }
+
+/* ── TAG PILLS ── */
+.tag { display:inline-block; font-size:11px; font-family:'JetBrains Mono',monospace;
+  padding:2px 9px; border-radius:4px; margin:2px; }
+.tag-ml  { background:rgba(124,109,240,.15); color:var(--p2); border:1px solid rgba(124,109,240,.3); }
+.tag-dl  { background:rgba(240,101,164,.15); color:#f59cc8; border:1px solid rgba(240,101,164,.3); }
+.tag-cv  { background:rgba(34,217,197,.12); color:var(--cyan); border:1px solid rgba(34,217,197,.25); }
+.tag-nlp { background:rgba(245,197,66,.12); color:var(--amber); border:1px solid rgba(245,197,66,.25); }
+
+/* confusion matrix highlight */
+.cm-tp { background:rgba(61,220,132,.15); color:#5ef0a0; font-weight:700; }
+.cm-tn { background:rgba(61,220,132,.15); color:#5ef0a0; font-weight:700; }
+.cm-fp { background:rgba(255,107,107,.12); color:#ff8c8c; font-weight:700; }
+.cm-fn { background:rgba(255,107,107,.12); color:#ff8c8c; font-weight:700; }
+</style>
+</head>
+<body>
+
+<!-- ═══════ HEADER ═══════ -->
+<header class="site-header">
+  <div class="badge">📘 Complete Exam Notes</div>
+  <h1>Artificial Intelligence &amp;<br>Machine Learning</h1>
+  <p>Every topic explained in full detail with real examples, diagrams, step-by-step walkthroughs, and unfamiliar terms decoded.</p>
+  <nav class="toc">
+    <a href="#ml-intro">Machine Learning &amp; Apps</a>
+    <a href="#types-ml">Types of ML</a>
+    <a href="#ml-steps">ML Project Steps</a>
+    <a href="#data-prep">Data Preparation</a>
+    <a href="#cleaning">Cleaning &amp; Consistency</a>
+    <a href="#encoding">Labeling &amp; Encoding</a>
+    <a href="#transform">Transformation &amp; Aug</a>
+    <a href="#reduction">Reduction &amp; Optimization</a>
+    <a href="#smote">SMOTE</a>
+    <a href="#hyperparams">Hyperparameter Tuning</a>
+    <a href="#metrics">Evaluation Metrics</a>
+    <a href="#text-pre">Text Preprocessing</a>
+    <a href="#cnn">CNN</a>
+    <a href="#rnn-lstm">RNN &amp; LSTM</a>
+    <a href="#yolo">YOLO v8</a>
+    <a href="#roboflow">Roboflow</a>
+    <a href="#weka">WEKA</a>
+    <a href="#datasets">How to Import Datasets</a>
+    <a href="#ml-vs-dl">ML vs Deep Learning</a>
+    <a href="#svm-rf">SVM &amp; Random Forest</a>
+    <a href="#overfitting">Overfitting &amp; Underfitting</a>
+    <a href="#integration">Data Integration</a>
+    <a href="#splitting">Data Splitting</a>
+    <a href="#data-per-model">Data Prep per Model Type</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+<!-- ═══════════════════════════════════════════════════
+     1. MACHINE LEARNING & APPLICATIONS
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="ml-intro">
+  <div class="sec-head">
+    <div class="sec-tag">01</div>
+    <h2 class="sec-title">Machine Learning &amp; <em>Its Applications</em></h2>
+  </div>
+
+  <p>Machine Learning (ML) is a <strong>branch of Artificial Intelligence</strong> that gives computers the ability to <em>learn from data</em> and improve at tasks without being explicitly programmed for every scenario. Instead of writing rules by hand, you give the machine examples, and it figures out the rules itself.</p>
+
+  <div class="eg">
+    <strong>Analogy</strong>
+    Teaching a child to recognise cats. You don't write a rule: "if it has pointy ears + whiskers + meows = cat." You show them 1,000 pictures of cats and non-cats. They learn the pattern themselves. ML works the same way — you give it labeled examples, it learns the pattern.
+  </div>
+
+  <h3>5 Core Features of ML</h3>
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">Learns from Data</div>
+      <p>The model improves as it sees more examples. A spam filter that sees 10,000 spam emails becomes much better than one that saw 100.</p>
+    </div>
+    <div class="card c-cyan">
+      <div class="card-title">Improves with Experience</div>
+      <p>Unlike traditional software that stays the same, an ML model can be retrained on new data to adapt to changing patterns (e.g., new spam tactics).</p>
+    </div>
+    <div class="card c-pink">
+      <div class="card-title">Identifies Hidden Patterns</div>
+      <p>Finds correlations a human might miss — e.g., customers who buy diapers on Friday also tend to buy beer (a famous real Walmart discovery).</p>
+    </div>
+    <div class="card c-amber">
+      <div class="card-title">Automates Tasks</div>
+      <p>Replaces repetitive manual work — reading invoices, routing support tickets, classifying product images.</p>
+    </div>
+    <div class="card c-green" style="grid-column:1/-1">
+      <div class="card-title">Makes Predictions</div>
+      <p>Given new input it has never seen before, it can predict an output — tomorrow's stock price, whether a transaction is fraudulent, whether a patient has a disease.</p>
+    </div>
+  </div>
+
+  <h3>Real-World Applications</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Industry</th><th>Application</th><th>How ML is used</th></tr></thead>
+      <tbody>
+        <tr><td>🏥 Healthcare</td><td>Disease prediction, Medical imaging</td><td>CNN analyses X-ray/MRI scans to detect tumors faster than radiologists</td></tr>
+        <tr><td>🏦 Finance</td><td>Fraud detection, Loan approval</td><td>Outlier detection flags unusual transactions; regression predicts creditworthiness</td></tr>
+        <tr><td>🛒 E-commerce</td><td>Product recommendations</td><td>Collaborative filtering ("people who bought X also bought Y")</td></tr>
+        <tr><td>🎓 Education</td><td>Personalised learning</td><td>Adaptive platforms adjust difficulty based on student performance history</td></tr>
+        <tr><td>🚗 Transport</td><td>Self-driving cars, Traffic prediction</td><td>YOLO detects pedestrians; LSTM predicts congestion from time-series data</td></tr>
+        <tr><td>🌾 Agriculture</td><td>Crop monitoring, Yield prediction</td><td>Satellite imagery + CNN detects disease in crops before visible to human eye</td></tr>
+        <tr><td>🔒 Cybersecurity</td><td>Malware, Threat detection</td><td>Anomaly detection identifies unusual network behaviour patterns</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     2. TYPES OF ML
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="types-ml">
+  <div class="sec-head">
+    <div class="sec-tag">02</div>
+    <h2 class="sec-title">Types of <em>Machine Learning</em></h2>
+  </div>
+
+  <!-- Supervised -->
+  <div class="card">
+    <div class="card-title">① Supervised Learning</div>
+    <p>The model is trained on <strong>labeled data</strong> — every input has a correct output attached. The model learns to map inputs → outputs, then predicts outputs for new inputs.</p>
+    <p><strong>Types of Supervised Learning:</strong></p>
+    <div class="g2">
+      <div>
+        <h4>Classification</h4>
+        <p>Predicts a <em>category</em> from a fixed set. Output = one label.</p>
+        <div class="eg"><strong>Examples</strong>Cat vs Dog image · Spam vs Not-spam email · Malignant vs Benign tumor · Pass vs Fail student</div>
+        <p><strong>Algorithms:</strong> Logistic Regression, Decision Tree, Random Forest, SVM, CNN</p>
+      </div>
+      <div>
+        <h4>Regression</h4>
+        <p>Predicts a <em>continuous number</em> — any value on a scale.</p>
+        <div class="eg"><strong>Examples</strong>House price prediction (₹45,00,000) · Temperature tomorrow (28.5°C) · Stock closing price · Student's exam score</div>
+        <p><strong>Algorithms:</strong> Linear Regression, Polynomial Regression, Ridge Regression</p>
+      </div>
+    </div>
+    <p style="margin-top:8px;"><strong>Algorithms (from your syllabus):</strong></p>
+    <ul class="sl">
+      <li><strong>Linear Regression</strong> — draws best-fit line through data; predicts continuous values (house prices)</li>
+      <li><strong>Decision Tree</strong> — splits data into branches using if/else conditions; each leaf = a prediction</li>
+      <li><strong>Random Forest</strong> — builds hundreds of decision trees and takes majority vote; more accurate than one tree</li>
+    </ul>
+  </div>
+
+  <!-- Unsupervised -->
+  <div class="card c-cyan">
+    <div class="card-title">② Unsupervised Learning</div>
+    <p>Model works on <strong>unlabeled data</strong> — no answers given. It discovers structure, groups, and patterns by itself. Input: text, audio, video, raw numbers.</p>
+    <div class="g2">
+      <div>
+        <h4>Clustering</h4>
+        <p>Groups similar data points together.</p>
+        <ul class="sl">
+          <li><strong>K-Means Clustering:</strong> You tell it how many groups (K). It assigns each point to the nearest cluster center and keeps adjusting until stable.</li>
+          <li><strong>Hierarchical Clustering:</strong> Builds a tree of clusters from bottom up — no need to pre-specify K.</li>
+        </ul>
+        <div class="eg"><strong>Example</strong>Netflix groups users into "Action lovers", "Binge watchers", "Comedy fans" without being told those labels — purely from watching patterns.</div>
+      </div>
+      <div>
+        <h4>Market Basket Analysis</h4>
+        <p>Finds what items are frequently bought together — used by supermarkets for product placement.</p>
+        <div class="eg"><strong>Famous Example</strong>Walmart found that on Fridays, customers who bought nappies/diapers also bought beer. They moved beer near the nappy aisle → sales went up. No human saw this pattern; an unsupervised algorithm did.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Agentic AI -->
+  <div class="card c-pink">
+    <div class="card-title">③ Agentic AI</div>
+    <p>An intelligent system that can <strong>reason, plan, make decisions, and execute tasks autonomously</strong> with minimal human input. It generates output based on user goals — not just a fixed response.</p>
+    <p>Unlike a simple chatbot that answers one question, an Agentic AI can break a goal into sub-tasks, use tools (search, APIs, code), and complete multi-step workflows.</p>
+    <div class="g2">
+      <div class="eg"><strong>Example — AI Personal Assistant</strong>You say: "Book me a flight to Dubai for next Friday under ₹20,000." An agentic AI searches flights, compares prices, fills the booking form, and confirms — all on its own. You only gave the goal.</div>
+      <div class="eg"><strong>Features</strong>Goal-oriented behaviour · Decision-making capability · Autonomous action execution · Can use tools (web search, code, APIs)</div>
+    </div>
+  </div>
+
+  <!-- Reinforcement -->
+  <div class="card c-amber">
+    <div class="card-title">④ Reinforcement Learning (RL)</div>
+    <p>An agent learns by <strong>interacting with its environment, taking actions, and receiving rewards or penalties</strong>. The goal is to maximise cumulative long-term reward.</p>
+    <div class="flow" style="margin:14px 0;">
+      <div class="flow-row">
+        <div class="flow-box" style="border-color:var(--p);">🤖 <strong>Agent</strong><br><small>takes action</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">🌍 <strong>Environment</strong><br><small>changes state</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="border-color:var(--green);">🏆 <strong>Reward / Penalty</strong><br><small>feedback</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="border-color:var(--cyan);">📈 <strong>Policy Update</strong><br><small>learn better action</small></div>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="eg"><strong>Example — AlphaGo (Google)</strong>AlphaGo played millions of Go games against itself. Win = reward. Lose = penalty. It discovered strategies no human had ever thought of and beat the world champion. It was never told "this is a good move."</div>
+      <div class="eg"><strong>Algorithms</strong>Q-Learning: stores a table of action values for each state. Deep Q-Network (DQN): uses neural network instead of table. SARSA: similar to Q-learning but updates policy during learning.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     3. STEPS OF AN ML PROJECT
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="ml-steps">
+  <div class="sec-head">
+    <div class="sec-tag">03</div>
+    <h2 class="sec-title">Steps of an <em>ML Project</em></h2>
+  </div>
+
+  <p>Every machine learning project follows a structured lifecycle. Skipping any step leads to poor results. 70–80% of the time is spent in steps 1–3.</p>
+
+  <div class="pipe">
+    <div class="pipe-step"><span class="pipe-num">STEP 1</span><span class="pipe-label">Define Problem</span></div>
+    <div class="pipe-step"><span class="pipe-num">STEP 2</span><span class="pipe-label">Collect Data</span></div>
+    <div class="pipe-step"><span class="pipe-num">STEP 3</span><span class="pipe-label">Prepare Data</span></div>
+    <div class="pipe-step"><span class="pipe-num">STEP 4</span><span class="pipe-label">Choose Model</span></div>
+    <div class="pipe-step"><span class="pipe-num">STEP 5</span><span class="pipe-label">Train Model</span></div>
+    <div class="pipe-step"><span class="pipe-num">STEP 6</span><span class="pipe-label">Evaluate</span></div>
+    <div class="pipe-step"><span class="pipe-num">STEP 7</span><span class="pipe-label">Deploy</span></div>
+  </div>
+
+  <div class="step-block"><div class="step-num">1</div><div class="step-body">
+    <h4>Define the Problem</h4>
+    <p>Decide what you want to predict. Is it a classification (cat/dog), regression (price), or something else? This determines which algorithm you will use.</p>
+    <div class="eg"><strong>Example</strong>"We want to detect underwater garbage in video streams." → Object Detection problem → YOLO model.</div>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">2</div><div class="step-body">
+    <h4>Collect Data</h4>
+    <p>Gather data from databases, APIs, sensors, image platforms, web scraping. More diverse, high-quality data = better model.</p>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">3</div><div class="step-body">
+    <h4>Prepare/Pre-process Data</h4>
+    <p>Clean, label, encode, normalize, split. This is the most time-consuming step. Covered in full detail in the Data Preparation section below.</p>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">4</div><div class="step-body">
+    <h4>Choose &amp; Build Model</h4>
+    <p>Select the right algorithm/architecture for your problem type and data type. Images → CNN/YOLO. Text sequences → LSTM/Transformer. Tabular data → Random Forest/SVM.</p>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">5</div><div class="step-body">
+    <h4>Train the Model</h4>
+    <p>Feed training data into the model. Model adjusts its internal weights iteratively using the chosen hyperparameters (learning rate, batch size, epochs). This is where the actual "learning" happens.</p>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">6</div><div class="step-body">
+    <h4>Evaluate</h4>
+    <p>Test the trained model on the <em>held-out test set</em> (data it never saw). Measure accuracy, precision, recall, F1-score. Check the confusion matrix. If performance is poor, go back and fix data or tune hyperparameters.</p>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">7</div><div class="step-body">
+    <h4>Deploy</h4>
+    <p>Put the model into production — a web app, API, mobile app, or hardware device. Monitor performance over time and retrain when real-world data distribution shifts.</p>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     4. DATA COLLECTION & PREPARATION
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="data-prep">
+  <div class="sec-head">
+    <div class="sec-tag">04</div>
+    <h2 class="sec-title">Data Collection &amp; <em>Preparation</em></h2>
+  </div>
+
+  <p>Data preparation is the <strong>process of converting raw, unstructured data into a clean, structured format</strong> that AI/ML models can understand and learn from. It directly determines model performance. Bad data in = bad predictions out.</p>
+
+  <div class="note">Data preparation typically takes 70–80% of the entire AI project timeline. It is the most important and most overlooked step.</div>
+
+  <h3>How to Import / Collect Datasets — All Methods</h3>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">📦 Databases</div>
+      <p><strong>SQL (Structured Query Language):</strong> MySQL, PostgreSQL, SQLite — for structured tabular data like customer records, transactions.</p>
+      <p><strong>NoSQL:</strong> MongoDB, Cassandra — for unstructured/semi-structured data like JSON documents, social media posts.</p>
+      <div class="eg"><strong>Code Example</strong><code>import pandas as pd; import sqlite3<br>conn = sqlite3.connect('data.db')<br>df = pd.read_sql("SELECT * FROM sales", conn)</code></div>
+    </div>
+    <div class="card c-cyan">
+      <div class="card-title">🌐 APIs</div>
+      <p>Collect data through website/service APIs. Sends HTTP request, receives structured JSON/XML back.</p>
+      <div class="eg"><strong>Examples</strong>Twitter API (tweets), OpenWeather API (weather), Alpha Vantage (stock prices), Google Maps (location data)</div>
+      <div class="eg"><strong>Code</strong><code>import requests<br>r = requests.get("https://api.openweathermap.org/...")<br>data = r.json()</code></div>
+    </div>
+    <div class="card c-pink">
+      <div class="card-title">🔌 Sensors / IoT</div>
+      <p>Data collected from physical devices in real time — temperature sensors, GPS trackers, factory machines, wearables, smart meters.</p>
+      <div class="eg"><strong>Example</strong>A factory machine streams vibration sensor readings every second. When a pattern matches "bearing failure pattern", the model triggers a maintenance alert — before the machine breaks.</div>
+    </div>
+    <div class="card c-amber">
+      <div class="card-title">🖼️ Image Datasets — Platforms</div>
+      <ul class="sl">
+        <li><strong>Kaggle:</strong> Largest dataset repository. Free download. Has competitions with labeled datasets.</li>
+        <li><strong>Roboflow:</strong> Computer vision specific — annotate, augment, export in YOLO format</li>
+        <li><strong>ImageNet:</strong> 14 million labeled images across 20,000 categories</li>
+        <li><strong>COCO Dataset:</strong> 330K images with detailed object annotations</li>
+        <li><strong>Google Open Images:</strong> 9 million images with bounding box labels</li>
+      </ul>
+    </div>
+    <div class="card c-green">
+      <div class="card-title">📚 Built-in Library Datasets</div>
+      <p>Scikit-learn, TensorFlow, and PyTorch all include ready-to-use datasets for practice.</p>
+      <div class="eg"><strong>Code</strong><code>from sklearn.datasets import load_iris<br>data = load_iris()<br># OR<br>from tensorflow.keras.datasets import mnist<br>(x_train, y_train), (x_test, y_test) = mnist.load_data()</code></div>
+    </div>
+    <div class="card">
+      <div class="card-title">🕸️ Web Scraping</div>
+      <p>Automatically extract data from websites using Python libraries like BeautifulSoup or Scrapy.</p>
+      <div class="eg"><strong>Example</strong>Scraping product names and prices from Amazon to build a price comparison dataset.</div>
+      <div class="warn">Always check a website's Terms of Service before scraping. Many sites prohibit it.</div>
+    </div>
+  </div>
+
+  <h3>Data Types — Structured vs Unstructured vs Semi-Structured</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Type</th><th>Description</th><th>Examples</th><th>Model Used</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Structured</strong></td><td>Organized in rows & columns. Easy to query.</td><td>CSV, Excel, SQL tables</td><td>Linear Regression, Decision Tree, SVM</td></tr>
+        <tr><td><strong>Unstructured</strong></td><td>No predefined format. Harder to process.</td><td>Images, videos, audio, raw text</td><td>CNN, RNN, LSTM, Transformer</td></tr>
+        <tr><td><strong>Semi-Structured</strong></td><td>Has some organization but no strict schema.</td><td>JSON, XML, Emails, HTML</td><td>NLP models + parsing</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     5. CLEANING & CONSISTENCY
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="cleaning">
+  <div class="sec-head">
+    <div class="sec-tag">05</div>
+    <h2 class="sec-title">Data Cleaning &amp; <em>Consistency</em></h2>
+  </div>
+
+  <p>Data cleaning is fixing all the problems in raw, real-world data before training. Real data is messy — it always has missing values, duplicates, typos, and outliers. A model trained on dirty data learns the wrong patterns.</p>
+
+  <div class="warn">Dirty data → incorrect patterns → poor predictions. Example: if 10% of your "cat" images are mislabeled as "dog", the model will permanently confuse cats with dogs.</div>
+
+  <h3>① Handling Missing Values</h3>
+  <p>Missing values happen when some fields were not recorded — a patient's weight was not entered, a sensor was offline, a user skipped a form field.</p>
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">Option A — Remove rows</div>
+      <p>Delete any row that has a missing value. Simple but you lose data.</p>
+      <p><strong>Use when:</strong> Only a few rows are missing and your dataset is large enough to afford it.</p>
+      <div class="eg"><strong>Code</strong><code>df.dropna(inplace=True)</code></div>
+    </div>
+    <div class="card c-cyan">
+      <div class="card-title">Option B — Fill with statistical value</div>
+      <ul class="sl">
+        <li><strong>Mean:</strong> Use average of the column. Good for normally distributed numbers.</li>
+        <li><strong>Median:</strong> Use middle value. Better when there are outliers (e.g., salary data).</li>
+        <li><strong>Mode:</strong> Use most common value. Good for categorical data (e.g., city name).</li>
+      </ul>
+      <div class="eg"><strong>Code</strong><code>df['age'].fillna(df['age'].mean(), inplace=True)</code></div>
+    </div>
+  </div>
+
+  <h3>② Removing Duplicates</h3>
+  <p>Duplicate rows make the model see the same example multiple times → it over-learns that specific case → <strong>overfitting</strong>.</p>
+  <div class="eg"><strong>Example</strong>If your dataset has the same 100 "fraud" transactions repeated 10 times, the model will think fraud patterns are extremely common and over-predict fraud everywhere.</div>
+  <div class="eg"><strong>Code</strong><code>df.drop_duplicates(inplace=True)</code></div>
+
+  <h3>③ Handling Noise / Outliers</h3>
+  <p>Noise = incorrect or extreme values caused by sensor errors, data entry mistakes, or corruption. Example: age = 999, temperature = -500°C.</p>
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">IQR Method (Box Plot)</div>
+      <p>Calculate Q1 (25th percentile) and Q3 (75th percentile). IQR = Q3 − Q1. Remove any value below Q1 − 1.5×IQR or above Q3 + 1.5×IQR.</p>
+    </div>
+    <div class="card c-pink">
+      <div class="card-title">Z-Score Method</div>
+      <p>If a data point is more than 3 standard deviations from the mean, it is an outlier. Remove or cap it.</p>
+    </div>
+  </div>
+
+  <h3>④ Ensuring Consistency</h3>
+  <p>Same data in different formats should be standardised:</p>
+  <ul class="sl">
+    <li><strong>Date format:</strong> "22-04-2026" vs "April 22, 2026" vs "2026/04/22" → all converted to one format</li>
+    <li><strong>Text case:</strong> "Cat", "cat", "CAT" → all lowercased to "cat"</li>
+    <li><strong>Units:</strong> mixing kg and lbs, cm and inches → convert everything to one unit</li>
+    <li><strong>Column names:</strong> "First Name", "firstname", "First_Name" → standardise to one naming convention</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     6. LABELING & ENCODING
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="encoding">
+  <div class="sec-head">
+    <div class="sec-tag">06</div>
+    <h2 class="sec-title">Labeling, Encoding &amp; <em>Resize / Normalize</em></h2>
+  </div>
+
+  <h3>Data Labeling</h3>
+  <p>Labeling means <strong>attaching the correct output answer to each piece of data</strong> so the model knows what to learn. Without labels, supervised learning is impossible.</p>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">Image Labeling / Annotation</div>
+      <p>For object detection: draw a bounding box around each object in the image and write its class name (label).</p>
+      <div class="eg"><strong>Example (YOLO annotation format)</strong>A photo of a street scene → box around each car (class=0), pedestrian (class=1), traffic light (class=2). YOLO reads these coordinates to learn what objects look like.</div>
+      <p><strong>Tools:</strong> Roboflow, LabelImg, CVAT, VGG Image Annotator</p>
+    </div>
+    <div class="card c-cyan">
+      <div class="card-title">Text / Tabular Labeling</div>
+      <p>Assign the output class to each data row.</p>
+      <div class="eg"><strong>Examples</strong>Email → "spam" or "not_spam" · Review text → "positive", "negative", "neutral" · Patient record → "has_diabetes: yes/no"</div>
+      <p><strong>Why it matters:</strong> Wrong labels teach the model the wrong thing. Mislabeling 5% of your data can drop accuracy by 10–20%.</p>
+    </div>
+  </div>
+
+  <h3>Encoding — Converting Categories to Numbers</h3>
+  <p>ML models only understand numbers. If your data has text categories ("red", "blue", "green"), you must convert them to numbers first.</p>
+
+  <div class="g2">
+    <div class="card c-amber">
+      <div class="card-title">Label Encoding</div>
+      <p>Assigns a unique integer to each category.</p>
+      <div class="formula">Red → 0 &nbsp;|&nbsp; Blue → 1 &nbsp;|&nbsp; Green → 2</div>
+      <p><strong>Problem:</strong> The model may think Green (2) is "greater than" Red (0) — implying an order that doesn't exist in color. Use only when categories have a natural order (e.g., Small=0, Medium=1, Large=2).</p>
+    </div>
+    <div class="card c-green">
+      <div class="card-title">One-Hot Encoding</div>
+      <p>Creates a separate binary (0/1) column for each category. Each row gets 1 in its category's column, 0 in all others.</p>
+      <div class="formula">Red   → [1, 0, 0]<br>Blue  → [0, 1, 0]<br>Green → [0, 0, 1]</div>
+      <p><strong>Use when:</strong> Categories have no natural order. This removes the false ordering problem of Label Encoding.</p>
+      <div class="eg"><strong>Code</strong><code>pd.get_dummies(df['color'])</code></div>
+    </div>
+  </div>
+
+  <h3>Resize (Image Data)</h3>
+  <p>Neural networks require all input images to be the <strong>exact same size</strong> — because the model's first layer has a fixed number of neurons matching the input dimensions. If images are different sizes, the network can't process them.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Model</th><th>Required Input Size</th></tr></thead>
+      <tbody>
+        <tr><td>YOLO v8</td><td>640 × 640 pixels</td></tr>
+        <tr><td>ResNet-50 / VGG-16</td><td>224 × 224 pixels</td></tr>
+        <tr><td>EfficientNet</td><td>300 × 300 pixels</td></tr>
+        <tr><td>Basic CNN (custom)</td><td>128 × 128 or 64 × 64 pixels</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="eg"><strong>Code</strong><code>from PIL import Image<br>img = Image.open("photo.jpg").resize((640, 640))<br># OR with OpenCV:<br>img = cv2.resize(img, (640, 640))</code></div>
+  <div class="note">Always maintain the aspect ratio when resizing if possible, or use letterboxing (add black bars) to avoid distorting objects — especially important for YOLO where bounding box coordinates depend on original proportions.</div>
+
+  <h3>Normalization</h3>
+  <p>Normalization (specifically Min-Max scaling) <strong>scales all feature values to a range between 0 and 1</strong>. This is essential because:</p>
+  <ul class="sl">
+    <li>Feature A (age): values 0–100. Feature B (salary): values 0–10,00,000. Without normalization, salary dominates all learning because its numbers are 10,000× bigger. Normalization makes them equally weighted.</li>
+    <li>Neural networks use gradient descent — it converges much faster when features are on the same scale.</li>
+  </ul>
+  <div class="formula">Normalized value = (x − min) / (max − min)</div>
+  <div class="eg"><strong>Image normalization example</strong>Pixel values are 0–255. After normalization: 0–1. So pixel 128 → 128/255 = 0.502. Neural networks train much faster on [0,1] than on [0,255].</div>
+
+  <h3>Standardization (Z-Score Normalization)</h3>
+  <p>Transforms data so it has <strong>mean = 0</strong> and <strong>standard deviation = 1</strong>. Good for models like SVM, Linear Regression, PCA that assume normally distributed data.</p>
+  <div class="formula">Standardized value = (x − mean) / standard_deviation</div>
+  <div class="eg"><strong>Code</strong><code>from sklearn.preprocessing import StandardScaler<br>scaler = StandardScaler()<br>X_scaled = scaler.fit_transform(X)</code></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     7. TRANSFORMATION & AUGMENTATION
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="transform">
+  <div class="sec-head">
+    <div class="sec-tag">07</div>
+    <h2 class="sec-title">Transformation &amp; <em>Augmentation</em></h2>
+  </div>
+
+  <h3>Data Transformation</h3>
+  <p>Transformation changes the <em>distribution or scale</em> of data to make it easier for models to learn from.</p>
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">Log Transformation</div>
+      <p>Applied when data is heavily skewed to the right (e.g., income distribution — most people earn low, a few earn extremely high). Log compresses the high values and spreads the low ones.</p>
+      <div class="formula">new_value = log(x + 1)</div>
+      <div class="eg"><strong>Example</strong>House prices: ₹50L, ₹60L, ₹70L, ₹5Cr. The ₹5Cr outlier destroys the scale. After log: values become comparable.</div>
+    </div>
+    <div class="card c-cyan">
+      <div class="card-title">Square Root Transformation</div>
+      <p>Milder than log. Good for count data (number of purchases, website visits) where values are moderately skewed.</p>
+      <div class="formula">new_value = √x</div>
+    </div>
+  </div>
+
+  <h3>Data Augmentation</h3>
+  <p>Augmentation <strong>artificially increases the size of your dataset by creating modified versions of existing data</strong>. A model trained on 1,000 images + augmentation effectively sees 5,000–10,000 variations.</p>
+
+  <div class="note">The key insight: A cat is still a cat whether the photo is flipped, rotated, slightly dark, or zoomed in. Augmentation teaches the model this robustness.</div>
+
+  <h3>Image Augmentation Methods</h3>
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">🔄 Flip</div>
+      <p><strong>Horizontal flip:</strong> Mirror the image left-right. A car driving left is still a car.</p>
+      <p><strong>Vertical flip:</strong> Flip upside down. Useful for aerial images (satellite photos of fields) where orientation doesn't matter.</p>
+    </div>
+    <div class="card c-cyan">
+      <div class="card-title">🔃 Rotate</div>
+      <p>Rotate image by a random angle (e.g., ±15°, ±30°, 90°, 180°). Teaches model to recognise objects regardless of viewing angle.</p>
+      <div class="eg"><strong>Important for:</strong> Medical imaging (X-rays, microscope slides) where the camera can be at any angle.</div>
+    </div>
+    <div class="card c-pink">
+      <div class="card-title">📺 Add Noise</div>
+      <p>Add random pixel-level distortion (Gaussian noise, salt-and-pepper). Makes the model robust to low-quality, grainy real-world images.</p>
+      <div class="eg"><strong>Important for:</strong> CCTV footage (often noisy), underwater images (turbid water = noisy).</div>
+    </div>
+    <div class="card c-amber">
+      <div class="card-title">✂️ Crop / Zoom</div>
+      <p>Randomly crop a portion of the image. Model learns to detect objects that are partially out of frame or very close up.</p>
+    </div>
+    <div class="card c-green">
+      <div class="card-title">💡 Brightness / Contrast</div>
+      <p>Randomly change image brightness and contrast. Model learns to detect objects in different lighting conditions — daylight, evening, shadow.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📐 Shear / Perspective</div>
+      <p>Apply geometric distortions. Simulates viewing an object from different angles or distances.</p>
+    </div>
+  </div>
+
+  <div class="eg">
+    <strong>Real-world impact — Underwater Garbage Detection</strong>
+    Your YOLO mAP is low because you have only 500 underwater images. After augmentation — flip, rotate, add underwater turbidity noise, change brightness for depth variations — you effectively have 4,000+ training samples. This can improve mAP from 30% to 65%+ without collecting a single new image.
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-label">Augmentation Impact on Model Accuracy</div>
+    <svg viewBox="0 0 560 200" class="ch" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="aug1" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#7c6df0" stop-opacity=".5"/><stop offset="100%" stop-color="#7c6df0"/></linearGradient>
+        <linearGradient id="aug2" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#22d9c5" stop-opacity=".5"/><stop offset="100%" stop-color="#22d9c5"/></linearGradient>
+      </defs>
+      <!-- No aug bar -->
+      <rect x="80"  y="100" width="80" height="70" fill="url(#aug1)" rx="6"/>
+      <text x="120" y="95"  fill="#a99cf5" font-size="13" text-anchor="middle" font-weight="700" font-family="Inter">35%</text>
+      <text x="120" y="185" fill="#6b6f90" font-size="11" text-anchor="middle" font-family="JetBrains Mono">No Aug</text>
+      <!-- Flip only -->
+      <rect x="200" y="80"  width="80" height="90" fill="url(#aug1)" rx="6" opacity=".7"/>
+      <text x="240" y="75"  fill="#a99cf5" font-size="13" text-anchor="middle" font-weight="700" font-family="Inter">45%</text>
+      <text x="240" y="185" fill="#6b6f90" font-size="11" text-anchor="middle" font-family="JetBrains Mono">+Flip</text>
+      <!-- Rotate -->
+      <rect x="320" y="55"  width="80" height="115" fill="url(#aug2)" rx="6" opacity=".8"/>
+      <text x="360" y="50"  fill="#22d9c5" font-size="13" text-anchor="middle" font-weight="700" font-family="Inter">58%</text>
+      <text x="360" y="185" fill="#6b6f90" font-size="11" text-anchor="middle" font-family="JetBrains Mono">+Rotate</text>
+      <!-- Full aug -->
+      <rect x="440" y="25"  width="80" height="145" fill="url(#aug2)" rx="6"/>
+      <text x="480" y="20"  fill="#22d9c5" font-size="14" text-anchor="middle" font-weight="700" font-family="Inter">72%</text>
+      <text x="480" y="185" fill="#22d9c5" font-size="11" text-anchor="middle" font-family="JetBrains Mono">Full Aug ★</text>
+      <!-- Axis -->
+      <line x1="60" y1="170" x2="545" y2="170" stroke="#2a2a45" stroke-width="1"/>
+      <text x="15"  y="110"  fill="#6b6f90" font-size="10" transform="rotate(-90,15,110)" text-anchor="middle" font-family="Inter">mAP Accuracy</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     8. REDUCTION & OPTIMIZATION
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="reduction">
+  <div class="sec-head">
+    <div class="sec-tag">08</div>
+    <h2 class="sec-title">Data Reduction &amp; <em>Optimization</em></h2>
+  </div>
+
+  <h3>Data Reduction</h3>
+  <p>When datasets are enormous (millions of features or rows), training becomes slow and models can overfit. Reduction shrinks the data while keeping the most important information.</p>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">PCA — Principal Component Analysis</div>
+      <p>PCA is a mathematical technique that <strong>reduces the number of features (columns)</strong> by finding the directions (principal components) that capture the most variance in the data, and keeping only those.</p>
+      <p><strong>Think of it as:</strong> compressing a 3D object into its most informative 2D shadow.</p>
+      <div class="eg"><strong>Example</strong>You have 50 features in a dataset. Many are correlated (height and weight, income and car price). PCA might reduce this to 10 uncorrelated components that still carry 95% of the information. Model trains 5× faster with similar accuracy.</div>
+      <div class="eg"><strong>Code</strong><code>from sklearn.decomposition import PCA<br>pca = PCA(n_components=10)<br>X_reduced = pca.fit_transform(X)</code></div>
+    </div>
+    <div class="card c-cyan">
+      <div class="card-title">Sampling</div>
+      <p>Instead of training on 10 million rows, use a <strong>representative random sample</strong> of 100,000 rows. If the sample is representative (same distribution as full data), model performance is similar at a fraction of the training time.</p>
+      <div class="eg"><strong>Stratified Sampling</strong>When doing train/test split, use stratified sampling to ensure each class is proportionally represented. If 30% of dataset is "fraud", then training set should also be ~30% fraud — not random.</div>
+    </div>
+  </div>
+
+  <h3>Feature Selection</h3>
+  <p>Choose only the <em>useful features</em> (columns) and remove irrelevant or redundant ones. This reduces overfitting, speeds training, and makes the model easier to interpret.</p>
+  <div class="g2">
+    <div class="card c-pink">
+      <div class="card-title">Correlation-Based Selection</div>
+      <p>Remove features that are highly correlated with each other (they carry redundant information). Keep the one with higher correlation to the target variable.</p>
+    </div>
+    <div class="card c-amber">
+      <div class="card-title">Feature Importance (Tree-Based)</div>
+      <p>Train a Random Forest, then look at which features the trees use most to make decisions. Drop features with near-zero importance.</p>
+    </div>
+  </div>
+
+  <h3>Model Optimization</h3>
+  <p>Optimization is the process of <strong>adjusting the model's internal parameters (weights) during training</strong> to minimise prediction error.</p>
+
+  <div class="card">
+    <div class="card-title">Gradient Descent — The Core Optimization Algorithm</div>
+    <p>Imagine you are blindfolded on a hilly landscape and your goal is to reach the lowest point (minimum error). You feel the slope under your feet (gradient) and take a step downhill. Repeat until you can't go lower.</p>
+    <div class="formula">new_weight = old_weight − learning_rate × gradient</div>
+    <div class="g2">
+      <div>
+        <h4>Batch Gradient Descent</h4>
+        <p>Uses the entire dataset to compute one gradient update. Very accurate but slow.</p>
+      </div>
+      <div>
+        <h4>Stochastic Gradient Descent (SGD)</h4>
+        <p>Updates after every single sample. Very fast but noisy/jittery. Can escape local minima.</p>
+      </div>
+      <div>
+        <h4>Mini-Batch Gradient Descent</h4>
+        <p>Uses a small batch (32–128 samples) per update. Best of both worlds. Standard in deep learning.</p>
+      </div>
+      <div>
+        <h4>Adam Optimizer</h4>
+        <p>Most popular optimizer. Adapts learning rate for each parameter automatically. Converges fast. Default choice for neural networks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     9. SMOTE
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="smote">
+  <div class="sec-head">
+    <div class="sec-tag">09</div>
+    <h2 class="sec-title"><em>SMOTE</em> — Explained Completely</h2>
+  </div>
+
+  <p><strong>SMOTE = Synthetic Minority Oversampling TEchnique</strong></p>
+  <p>SMOTE solves the <strong>class imbalance problem</strong> — when one class has many more examples than another. Class imbalance causes the model to almost always predict the majority class.</p>
+
+  <h3>The Problem — Why Class Imbalance is Dangerous</h3>
+  <div class="eg">
+    <strong>Example — Fraud Detection</strong>
+    You have 10,000 transactions: 9,900 are legitimate (99%), 100 are fraud (1%). If a model always says "not fraud" — it gets 99% accuracy! But it catches ZERO fraud cases. That's a useless model. The model learned to just predict the majority class.
+  </div>
+
+  <h3>Solution Options</h3>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">Oversampling (Basic)</div>
+      <p>Duplicate existing minority class samples until classes are balanced.</p>
+      <div class="warn">Problem: You're just copying the same 100 fraud examples 99 times. The model memorises those 100 exact patterns but doesn't generalise to new fraud patterns. Leads to overfitting.</div>
+    </div>
+    <div class="card c-pink">
+      <div class="card-title">Undersampling</div>
+      <p>Randomly remove majority class samples until balanced.</p>
+      <div class="warn">Problem: You're throwing away 9,800 legitimate transaction examples — losing potentially valuable information.</div>
+    </div>
+  </div>
+
+  <div class="card c-green" style="margin-top:0;">
+    <div class="card-title">★ SMOTE — The Smart Solution</div>
+    <p>SMOTE creates <strong>brand new, synthetic (artificially generated) minority class samples</strong> that are <em>fake but realistic</em> — not just copies of existing ones.</p>
+
+    <h4>How SMOTE Works (Step by Step)</h4>
+    <div class="step-block"><div class="step-num">1</div><div class="step-body">
+      <p>Take a minority class sample (e.g., a fraud transaction with features: amount=₹50,000, time=2am, foreign_IP=yes).</p>
+    </div></div>
+    <div class="step-block"><div class="step-num">2</div><div class="step-body">
+      <p>Find its K nearest neighbours — other fraud transactions that are similar but not identical.</p>
+    </div></div>
+    <div class="step-block"><div class="step-num">3</div><div class="step-body">
+      <p>Pick one neighbour. Draw a random line segment between the original point and that neighbour.</p>
+    </div></div>
+    <div class="step-block"><div class="step-num">4</div><div class="step-body">
+      <p>Pick a random point on that line segment → this is your new synthetic sample. It's between two real examples, so it's realistic but not a duplicate.</p>
+    </div></div>
+    <div class="step-block"><div class="step-num">5</div><div class="step-body">
+      <p>Repeat until minority and majority classes are balanced.</p>
+    </div></div>
+
+    <div class="chart-box" style="margin-top:16px;">
+      <div class="chart-label">SMOTE — Before vs After</div>
+      <svg viewBox="0 0 560 160" class="ch" xmlns="http://www.w3.org/2000/svg">
+        <!-- BEFORE -->
+        <text x="140" y="18" fill="#6b6f90" font-size="10" text-anchor="middle" font-family="JetBrains Mono" letter-spacing=".1em">BEFORE SMOTE</text>
+        <rect x="20"  y="28" width="230" height="32" rx="4" fill="rgba(124,109,240,.6)"/>
+        <text x="135" y="49" fill="#fff" font-size="12" font-family="Inter" text-anchor="middle" font-weight="600">Legitimate: 9,900 (99%)</text>
+        <rect x="20"  y="66" width="23"  height="32" rx="4" fill="rgba(240,101,164,.7)"/>
+        <text x="200" y="87" fill="#f59cc8" font-size="12" font-family="Inter">Fraud: 100 (1%)</text>
+        <!-- Arrow -->
+        <text x="278" y="80" fill="#22d9c5" font-size="22" text-anchor="middle">→</text>
+        <!-- AFTER -->
+        <text x="420" y="18" fill="#3ddc84" font-size="10" text-anchor="middle" font-family="JetBrains Mono" letter-spacing=".1em">AFTER SMOTE</text>
+        <rect x="305" y="28" width="230" height="32" rx="4" fill="rgba(124,109,240,.6)"/>
+        <text x="420" y="49" fill="#fff" font-size="12" font-family="Inter" text-anchor="middle" font-weight="600">Legitimate: 9,900 (50%)</text>
+        <rect x="305" y="66" width="230" height="32" rx="4" fill="rgba(240,101,164,.7)"/>
+        <text x="420" y="87" fill="#fff" font-size="12" font-family="Inter" text-anchor="middle" font-weight="600">Fraud: 9,900 synthetic (50%) ✓</text>
+        <text x="420" y="140" fill="#3ddc84" font-size="10" text-anchor="middle" font-family="Inter">SMOTE generated 9,800 new synthetic fraud samples</text>
+      </svg>
+    </div>
+
+    <div class="eg"><strong>Code</strong><code>from imblearn.over_sampling import SMOTE<br>sm = SMOTE(random_state=42)<br>X_resampled, y_resampled = sm.fit_resample(X, y)</code></div>
+  </div>
+
+  <h3>SMOTE for Image Data (YOLO / Computer Vision)</h3>
+  <p>For image datasets, SMOTE doesn't work directly on pixels. Instead you use <strong>Data Augmentation</strong> on the minority class — create flipped/rotated/brightened versions of under-represented classes until all classes have roughly equal samples.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     10. HYPERPARAMETER TUNING
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="hyperparams">
+  <div class="sec-head">
+    <div class="sec-tag">10</div>
+    <h2 class="sec-title">Hyperparameters &amp; <em>Tuning</em></h2>
+  </div>
+
+  <p><strong>Hyperparameters</strong> are settings you choose <em>before</em> training begins. They control how the model learns. The model cannot learn hyperparameters from data — you must set them manually (or use automated tuning).</p>
+  <p><strong>Parameters</strong> (different from hyperparameters) are the internal values the model adjusts automatically during training — like neuron weights.</p>
+
+  <div class="eg">
+    <strong>Bicycle Analogy (from your notes)</strong>
+    Learning Rate = how fast you pedal. Epochs = how many practice sessions. Batch Size = how many students practice at once. These are all decided before you start riding — just like hyperparameters are set before training.
+  </div>
+
+  <h3>The 4 Key Hyperparameters</h3>
+
+  <div class="step-block"><div class="step-num">1</div><div class="step-body">
+    <h4>Learning Rate (α)</h4>
+    <p>Controls how big a step the model takes when updating its weights to correct errors.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Value</th><th>Effect</th><th>Problem</th></tr></thead>
+      <tbody>
+        <tr><td>Too high (e.g., 1.0)</td><td>Large steps, fast early progress</td><td>Overshoots minimum, never converges, training is unstable</td></tr>
+        <tr><td>Too low (e.g., 0.00001)</td><td>Very precise small steps</td><td>Extremely slow training, takes forever</td></tr>
+        <tr><td class="cm-tp">Just right (e.g., 0.001)</td><td>Steady convergence</td><td>None — this is the sweet spot</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eg"><strong>Analogy</strong>Walking down a hill in the dark to find the lowest point. Too big a step = you jump over the valley. Too small = you take all night. Common starting value: 0.001 for Adam optimizer.</div>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">2</div><div class="step-body">
+    <h4>Epochs</h4>
+    <p>One epoch = the model has processed the <em>entire training dataset once</em>.</p>
+    <p>If epochs = 50, the model goes through all your data 50 times, adjusting weights each time.</p>
+    <div class="warn">Too few epochs → underfitting (hasn't learned enough). Too many epochs → overfitting (memorised training data). Solution: use Early Stopping — monitor validation loss and stop when it stops improving.</div>
+    <div class="eg"><strong>Typical values:</strong> Simple ML models: 100–500 epochs. Deep learning on images: 50–300 epochs. YOLO: 100–300 epochs.</div>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">3</div><div class="step-body">
+    <h4>Batch Size</h4>
+    <p>How many training samples are processed before the model updates its weights once.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Batch Size</th><th>Memory Use</th><th>Speed</th><th>Stability</th><th>Use when</th></tr></thead>
+      <tbody>
+        <tr><td>16</td><td>Low</td><td>Slower</td><td>Noisy updates</td><td>Limited GPU memory</td></tr>
+        <tr><td>32</td><td>Medium</td><td>Good</td><td>Good balance</td><td>Standard default choice</td></tr>
+        <tr><td>64</td><td>Higher</td><td>Faster</td><td>Smoother</td><td>Larger GPU available</td></tr>
+        <tr><td>128</td><td>High</td><td>Fastest</td><td>Smooth but may overfit</td><td>Very large datasets</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">4</div><div class="step-body">
+    <h4>Number of Layers (Depth)</h4>
+    <p>More layers = deeper network = can learn more complex patterns, but needs more data and takes longer to train. For simple tasks (digit recognition), 3–5 layers is enough. For complex tasks (face recognition), 50–150 layers (ResNet-50, ResNet-152).</p>
+  </div></div>
+
+  <h3>Hyperparameter Tuning Methods</h3>
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">Grid Search</div>
+      <p>Define a grid of all combinations you want to try. The algorithm trains a model for every single combination and returns the best one.</p>
+      <div class="eg"><strong>Example</strong>learning_rate = [0.01, 0.001, 0.0001]; batch_size = [16, 32, 64]. Grid search tries all 9 combinations (3×3) and picks the best.</div>
+      <p><strong>Con:</strong> Computationally expensive — grows exponentially with more hyperparameters.</p>
+    </div>
+    <div class="card c-cyan">
+      <div class="card-title">Random Search</div>
+      <p>Instead of trying all combinations, randomly sample combinations from the hyperparameter space. Usually finds a good result in 60–80% fewer trials than Grid Search.</p>
+      <div class="eg"><strong>Insight:</strong> Research shows that for most models, a few hyperparameters matter a lot and the rest barely matter. Random search covers more of the important dimensions faster.</div>
+    </div>
+    <div class="card c-amber" style="grid-column:1/-1">
+      <div class="card-title">Bayesian Optimization</div>
+      <p>Uses the results of previous trials to <em>intelligently decide</em> which combination to try next. Builds a probabilistic model of the search space and focuses on promising areas. Most efficient of the three — finds optimal hyperparameters in fewest trials.</p>
+      <p><strong>Tools:</strong> Optuna, Hyperopt, Keras Tuner, W&amp;B Sweeps</p>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-label">Training Loss — effect of learning rate choice</div>
+    <svg viewBox="0 0 560 210" class="ch" xmlns="http://www.w3.org/2000/svg">
+      <line x1="50" y1="20" x2="50" y2="180" stroke="#2a2a45" stroke-width="1"/>
+      <line x1="50" y1="180" x2="540" y2="180" stroke="#2a2a45" stroke-width="1"/>
+      <text x="295" y="200" fill="#6b6f90" font-size="10" font-family="JetBrains Mono" text-anchor="middle">Epochs →</text>
+      <text x="14" y="105" fill="#6b6f90" font-size="10" font-family="Inter" transform="rotate(-90,14,105)" text-anchor="middle">Loss ↓</text>
+      <!-- Good LR curve (smooth descent) -->
+      <polyline points="50,165 110,130 170,100 230,78 290,64 360,55 440,50 540,48"
+        fill="none" stroke="#3ddc84" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Too high LR (oscillates) -->
+      <polyline points="50,160 110,80 170,140 230,60 290,130 360,70 440,125 540,80"
+        fill="none" stroke="#ff6b6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6,3"/>
+      <!-- Too low LR (barely moves) -->
+      <polyline points="50,168 110,163 170,160 230,158 290,156 360,155 440,154 540,153"
+        fill="none" stroke="#f5c542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4,4"/>
+      <!-- Legend -->
+      <line x1="60"  y1="205" x2="80"  y2="205" stroke="#3ddc84" stroke-width="2.5"/>
+      <text x="85"  y="209" fill="#3ddc84" font-size="10" font-family="Inter">Good LR (0.001)</text>
+      <line x1="210" y1="205" x2="230" y2="205" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,3"/>
+      <text x="235" y="209" fill="#ff6b6b" font-size="10" font-family="Inter">Too High LR</text>
+      <line x1="360" y1="205" x2="380" y2="205" stroke="#f5c542" stroke-width="2" stroke-dasharray="4,4"/>
+      <text x="385" y="209" fill="#f5c542" font-size="10" font-family="Inter">Too Low LR</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     11. EVALUATION METRICS
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="metrics">
+  <div class="sec-head">
+    <div class="sec-tag">11</div>
+    <h2 class="sec-title">Evaluation <em>Metrics</em></h2>
+  </div>
+
+  <p>Evaluation metrics measure <strong>how well a trained model actually performs</strong>. You always evaluate on the test set — data the model has never seen. Different metrics are important for different problems.</p>
+
+  <h3>The Confusion Matrix — Foundation of All Metrics</h3>
+  <p>A confusion matrix is a 2×2 table (for binary classification) showing all four possible prediction outcomes.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th></th><th>Predicted: Positive (Fraud)</th><th>Predicted: Negative (Legit)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Actual: Positive</strong></td>
+          <td class="cm-tp">✓ True Positive (TP)<br><small>Fraud correctly identified as fraud</small></td>
+          <td class="cm-fn">✗ False Negative (FN)<br><small>Fraud missed — said it was legit. Dangerous!</small></td>
+        </tr>
+        <tr>
+          <td><strong>Actual: Negative</strong></td>
+          <td class="cm-fp">✗ False Positive (FP)<br><small>Legit blocked — said it was fraud. Annoying!</small></td>
+          <td class="cm-tn">✓ True Negative (TN)<br><small>Legit correctly identified as legit</small></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note">TP and TN are good (correct predictions). FP and FN are errors. Different errors have different costs — in cancer detection, an FN (missing a cancer) is far worse than an FP (unnecessary biopsy).</div>
+
+  <h3>The 4 Core Metrics</h3>
+
+  <div class="step-block"><div class="step-num">1</div><div class="step-body">
+    <h4>Accuracy</h4>
+    <p>What percentage of ALL predictions were correct?</p>
+    <div class="formula">Accuracy = (TP + TN) / (TP + TN + FP + FN)</div>
+    <div class="eg"><strong>Example</strong>Model makes 100 predictions. 90 are correct → Accuracy = 90%.</div>
+    <div class="warn">Accuracy is misleading for imbalanced datasets. If 99% of data is class A, a model that always predicts A gets 99% accuracy but is useless at detecting class B.</div>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">2</div><div class="step-body">
+    <h4>Precision</h4>
+    <p>Of all the cases the model <em>predicted as positive</em>, how many actually were positive?</p>
+    <div class="formula">Precision = TP / (TP + FP)</div>
+    <p>High precision = when the model says "fraud", it's almost always right. Low false positives.</p>
+    <div class="eg"><strong>Use Precision when FP is costly:</strong> Spam filter — if precision is low, too many real emails land in spam. Customer service chatbot — if precision is low, it gives wrong answers confidently.</div>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">3</div><div class="step-body">
+    <h4>Recall (Sensitivity)</h4>
+    <p>Of all the actual positive cases, how many did the model <em>catch</em>?</p>
+    <div class="formula">Recall = TP / (TP + FN)</div>
+    <p>High recall = model catches most positive cases. Low false negatives.</p>
+    <div class="eg"><strong>Use Recall when FN is costly:</strong> Cancer detection — missing a cancer (FN) is life-threatening. Better to have a false alarm than to miss the real case. COVID-19 testing — you want to catch every positive case, even if some are false alarms.</div>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">4</div><div class="step-body">
+    <h4>F1-Score</h4>
+    <p>The <em>harmonic mean</em> of Precision and Recall. Use when both matter equally, and the dataset is imbalanced.</p>
+    <div class="formula">F1 = 2 × (Precision × Recall) / (Precision + Recall)</div>
+    <p>F1 = 1.0 means perfect precision AND recall. F1 = 0.0 means complete failure.</p>
+    <div class="eg"><strong>Example</strong>If Precision = 0.90 and Recall = 0.50, F1 = 2×(0.90×0.50)/(0.90+0.50) = 0.643. This penalises the low recall — unlike accuracy which might look fine.</div>
+  </div></div>
+
+  <h3>mAP — Mean Average Precision (Object Detection)</h3>
+  <p>For YOLO and object detection models, the main metric is <strong>mAP (mean Average Precision)</strong>. It measures how accurately the model both localizes (finds the position) and classifies objects.</p>
+  <div class="card">
+    <div class="card-title">mAP@0.5 vs mAP@0.5:0.95</div>
+    <p><strong>IoU (Intersection over Union):</strong> Measures how much the predicted bounding box overlaps with the actual bounding box. IoU=1 means perfect overlap. IoU=0 means no overlap.</p>
+    <p><strong>mAP@0.5:</strong> Consider a detection correct if IoU ≥ 0.5 (bounding box overlaps at least 50% with ground truth). Standard metric.</p>
+    <p><strong>mAP@0.5:0.95:</strong> Average mAP across IoU thresholds from 0.5 to 0.95. Stricter. COCO benchmark standard.</p>
+    <div class="eg"><strong>Your case</strong>If your YOLO model has mAP@0.5 = 0.35 (35%), this means on average, 35% of detected garbage items were correctly identified and localized. Causes: incorrect annotations, class imbalance, poor image quality. Fix: better labels + SMOTE-equivalent augmentation + more training data.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     12. TEXT PREPROCESSING
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="text-pre">
+  <div class="sec-head">
+    <div class="sec-tag">12</div>
+    <h2 class="sec-title">Text <em>Preprocessing</em></h2>
+  </div>
+
+  <p>Text preprocessing converts raw human language (which is messy, inconsistent, and full of noise) into clean numerical data that ML models can process. NLP models cannot understand raw text — they need numbers.</p>
+
+  <h3>Complete Pipeline — 8 Steps</h3>
+
+  <div class="step-block"><div class="step-num">1</div><div class="step-body">
+    <h4>Lowercasing</h4>
+    <p>Convert all text to lowercase so "Hello", "HELLO", and "hello" are treated as the same word.</p>
+    <div class="eg"><strong>Example</strong>"Artificial Intelligence is Amazing!" → "artificial intelligence is amazing!"</div>
+    <div class="eg"><strong>Code</strong><code>text = text.lower()</code></div>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">2</div><div class="step-body">
+    <h4>Removing Punctuation &amp; Special Characters</h4>
+    <p>Remove !, ?, ., @, #, emojis, URLs, HTML tags. These usually carry no useful meaning for classification tasks.</p>
+    <div class="eg"><strong>Example</strong>"Hello!!! How are you? 😊 Visit http://site.com" → "Hello How are you"</div>
+    <div class="eg"><strong>Code</strong><code>import re<br>text = re.sub(r'[^a-zA-Z\s]', '', text)</code></div>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">3</div><div class="step-body">
+    <h4>Tokenization</h4>
+    <p>Split text into individual units (tokens). Can be word-level or sentence-level.</p>
+    <div class="g2">
+      <div class="eg"><strong>Word Tokenization</strong>"I love machine learning" → ["I", "love", "machine", "learning"]</div>
+      <div class="eg"><strong>Sentence Tokenization</strong>"I love AI. It is powerful." → ["I love AI.", "It is powerful."]</div>
+    </div>
+    <div class="eg"><strong>Code</strong><code>from nltk.tokenize import word_tokenize<br>tokens = word_tokenize("I love AI")<br># → ['I', 'love', 'AI']</code></div>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">4</div><div class="step-body">
+    <h4>Removing Stopwords</h4>
+    <p>Remove extremely common words that carry no meaningful information for classification: "is", "am", "the", "a", "and", "of", "in", "I".</p>
+    <div class="eg"><strong>Example</strong>"I am learning about artificial intelligence" → ["learning", "artificial", "intelligence"] — the 3 meaningful words remain.</div>
+    <div class="eg"><strong>Code</strong><code>from nltk.corpus import stopwords<br>stop_words = set(stopwords.words('english'))<br>tokens = [w for w in tokens if w not in stop_words]</code></div>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">5</div><div class="step-body">
+    <h4>Stemming</h4>
+    <p>Chop words down to their root by removing suffixes. Fast but crude — sometimes produces non-words.</p>
+    <div class="eg"><strong>Examples</strong>running → run · studies → studi · playing → play · connection → connect</div>
+    <div class="eg"><strong>Code</strong><code>from nltk.stem import PorterStemmer<br>ps = PorterStemmer()<br>ps.stem("running")  # → "run"</code></div>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">6</div><div class="step-body">
+    <h4>Lemmatization</h4>
+    <p>Converts words to their dictionary base form (lemma). More accurate than stemming — always produces a real word. Uses grammar rules and vocabulary.</p>
+    <div class="eg"><strong>Examples</strong>better → good · running → run · studies → study · was → be · mice → mouse</div>
+    <div class="eg"><strong>Code</strong><code>from nltk.stem import WordNetLemmatizer<br>lemmatizer = WordNetLemmatizer()<br>lemmatizer.lemmatize("studies")  # → "study"</code></div>
+    <div class="note">Lemmatization > Stemming in quality, but slightly slower. For production NLP models (sentiment analysis, chatbots), use lemmatization.</div>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">7</div><div class="step-body">
+    <h4>Removing Noise</h4>
+    <p>Remove: emojis, HTML tags (&lt;br&gt;, &lt;p&gt;), URLs, numbers (if not needed), repeated characters ("soooooo good" → "so good").</p>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">8</div><div class="step-body">
+    <h4>Vectorization — Converting Text to Numbers</h4>
+    <p>The final step. Convert cleaned tokens to numbers so the ML model can actually process them.</p>
+    <div class="g2">
+      <div class="card">
+        <div class="card-title">Bag of Words (BoW)</div>
+        <p>Create a vocabulary of all unique words. Each sentence becomes a vector of word counts.</p>
+        <div class="formula">Vocab: [AI, love, hate, machine]<br>"I love AI" → [1, 1, 0, 0]<br>"I hate AI" → [1, 0, 1, 0]</div>
+      </div>
+      <div class="card c-cyan">
+        <div class="card-title">TF-IDF</div>
+        <p>Term Frequency-Inverse Document Frequency. Weights words by how frequently they appear in a document BUT penalises words common across all documents.</p>
+        <div class="eg"><strong>Insight</strong>"the" appears in every sentence → low IDF → low weight. "neural" appears only in AI articles → high IDF → high weight. Much better than raw counts.</div>
+      </div>
+      <div class="card c-pink" style="grid-column:1/-1">
+        <div class="card-title">Word Embeddings (Word2Vec, GloVe, BERT)</div>
+        <p>Each word is mapped to a dense vector of 100–768 numbers that captures semantic meaning. Similar words have similar vectors. "King" − "Man" + "Woman" ≈ "Queen" — embeddings understand relationships.</p>
+        <div class="eg"><strong>Used in:</strong> All modern NLP — chatbots, GPT, BERT, sentiment analysis, machine translation.</div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     13. CNN
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="cnn">
+  <div class="sec-head">
+    <div class="sec-tag">13</div>
+    <h2 class="sec-title">CNN — <em>Convolutional Neural Network</em></h2>
+  </div>
+
+  <p>A CNN is a deep learning model <strong>specifically designed to process grid-like data — especially images</strong>. It automatically learns to detect visual features (edges, textures, shapes, objects) by applying learnable filters across the image.</p>
+
+  <div class="note">Unlike regular neural networks where every neuron connects to every other (expensive), CNN neurons only connect to a small local region — mimicking how the human visual cortex works.</div>
+
+  <h3>How CNN Works — Layer by Layer</h3>
+
+  <div class="flow">
+    <div class="flow-row">
+      <div class="flow-box" style="border-color:var(--p);">📷 <strong>Input Layer</strong><br><small>Raw image (e.g., 224×224×3 pixels — height × width × RGB channels)</small></div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row">
+      <div class="flow-box" style="border-color:var(--cyan);">🔍 <strong>Convolutional Layer</strong><br><small>Applies small filters (e.g., 3×3) across image. Each filter detects one feature (horizontal edge, colour gradient). Output = feature map.</small></div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row">
+      <div class="flow-box">⚡ <strong>Activation — ReLU</strong><br><small>ReLU(x) = max(0, x). Sets all negative values to 0. Adds non-linearity so network can learn complex patterns.</small></div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row">
+      <div class="flow-box" style="border-color:var(--pink);">📉 <strong>Pooling Layer (MaxPool)</strong><br><small>Reduces spatial size of feature maps. Takes max value in each 2×2 region. Shrinks image by half, keeps important features. Reduces computation and prevents overfitting.</small></div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row">
+      <div class="flow-box">🔄 <strong>More Conv + Pool Layers</strong><br><small>Deeper layers detect more complex features: edges → shapes → object parts → whole objects</small></div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row">
+      <div class="flow-box" style="border-color:var(--amber);">📊 <strong>Flatten</strong><br><small>Convert 3D feature maps into a 1D vector to feed into the fully connected layers</small></div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row">
+      <div class="flow-box" style="border-color:var(--green);">🎯 <strong>Fully Connected + Output Layer</strong><br><small>Standard neural network layers that do final classification. Output = softmax probabilities for each class.</small></div>
+    </div>
+  </div>
+
+  <div class="eg">
+    <strong>What each CNN layer actually learns</strong>
+    Layer 1 (early): detects edges and color gradients — "there's a vertical line here."
+    Layer 3–4: detects textures and simple shapes — "that's a circular pattern."
+    Layer 7–8: detects object parts — "that looks like a cat's ear."
+    Final layers: detects the whole object — "that IS a cat, with 98% confidence."
+  </div>
+
+  <h3>Key CNN Architectures</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Architecture</th><th>Year</th><th>Layers</th><th>Notable for</th><th>Use case</th></tr></thead>
+      <tbody>
+        <tr><td>LeNet</td><td>1998</td><td>5</td><td>First successful CNN</td><td>Digit recognition</td></tr>
+        <tr><td>VGG-16</td><td>2014</td><td>16</td><td>Simple uniform design</td><td>Image classification</td></tr>
+        <tr><td>ResNet-50</td><td>2015</td><td>50</td><td>Skip connections (residuals)</td><td>General image classification</td></tr>
+        <tr><td>EfficientNet</td><td>2019</td><td>Variable</td><td>Most efficient (accuracy/compute)</td><td>Mobile deployment</td></tr>
+        <tr><td>Vision Transformer</td><td>2020</td><td>Variable</td><td>Uses attention mechanism</td><td>State-of-the-art classification</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Data Preparation for CNN</h3>
+  <ul class="sl">
+    <li>Resize all images to the model's required input size (224×224, 640×640, etc.)</li>
+    <li>Normalize pixel values: divide by 255 to get range [0,1]</li>
+    <li>Apply data augmentation to prevent overfitting (flip, rotate, zoom)</li>
+    <li>Large datasets needed — deep networks have millions of parameters to learn</li>
+    <li>Less manual feature engineering — the CNN learns features automatically</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     14. YOLO v8
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="yolo">
+  <div class="sec-head">
+    <div class="sec-tag">14</div>
+    <h2 class="sec-title">YOLO v8 — <em>You Only Look Once</em></h2>
+  </div>
+
+  <p>YOLO is a real-time object detection model. <strong>"You Only Look Once"</strong> refers to the key innovation: it processes an entire image <em>once</em> in a single forward pass and outputs all detected objects simultaneously — unlike older methods that scan the image many times.</p>
+
+  <h3>Why YOLO is Revolutionary</h3>
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">Old Method (R-CNN, 2-stage)</div>
+      <p><strong>Stage 1:</strong> Region Proposal Network scans for ~2,000 candidate regions where an object might be.<br><strong>Stage 2:</strong> CNN classifies each region separately.</p>
+      <p>Result: Accurate but very slow — 0.5–2 seconds per image. Cannot do real-time video.</p>
+    </div>
+    <div class="card c-green">
+      <div class="card-title">YOLO (1-stage)</div>
+      <p>Divides image into an S×S grid. Each cell simultaneously predicts: bounding box location, confidence score, and class probabilities — all in one pass.</p>
+      <p>Result: ~30–200 frames per second. Real-time video processing possible.</p>
+    </div>
+  </div>
+
+  <h3>How YOLO v8 Works — Step by Step</h3>
+
+  <div class="step-block"><div class="step-num">1</div><div class="step-body">
+    <h4>Image Input &amp; Resizing</h4>
+    <p>Input image is resized to 640×640. If the aspect ratio is different, letterboxing (gray padding) is applied so objects aren't distorted.</p>
+  </div></div>
+  <div class="step-block"><div class="step-num">2</div><div class="step-body">
+    <h4>Backbone — Feature Extraction</h4>
+    <p>YOLO v8 uses a modified CSPDarknet backbone (a CNN) to extract feature maps at multiple scales. Small features at large scale → detects big objects. Large features at small scale → detects small objects.</p>
+  </div></div>
+  <div class="step-block"><div class="step-num">3</div><div class="step-body">
+    <h4>Neck — Feature Pyramid Network (FPN)</h4>
+    <p>Combines feature maps from different depths to give the model multi-scale awareness. Good at detecting both small objects (birds) and large objects (trucks) in the same image.</p>
+  </div></div>
+  <div class="step-block"><div class="step-num">4</div><div class="step-body">
+    <h4>Head — Prediction</h4>
+    <p>For each grid cell, YOLO v8 predicts: <code>[x, y, w, h, confidence, class_1, class_2, ...]</code> — box center coordinates, width/height, confidence it contains an object, and probability for each class.</p>
+  </div></div>
+  <div class="step-block"><div class="step-num">5</div><div class="step-body">
+    <h4>NMS — Non-Maximum Suppression</h4>
+    <p>YOLO often draws multiple overlapping boxes for the same object. NMS removes duplicates: keep only the box with highest confidence; remove any other box that overlaps it by more than a threshold (IoU > 0.5).</p>
+  </div></div>
+
+  <div class="eg">
+    <strong>Real Use Case — Underwater Garbage Detection (Your Project)</strong>
+    Camera on a drone/submarine captures a video stream. YOLO v8 runs on each frame at 30 fps. Each frame → backbone extracts features → head predicts: "plastic bottle at [120, 340, 80, 60px], confidence 87%" and "metal can at [380, 290, 60, 70px], confidence 74%". System logs GPS coordinates where garbage was found.
+  </div>
+
+  <h3>YOLO v8 Improvements over Previous Versions</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Feature</th><th>YOLO v5</th><th>YOLO v8</th></tr></thead>
+      <tbody>
+        <tr><td>Architecture</td><td>CSPNet backbone</td><td>C2f (Cross-Stage Partial with 2 outputs) — better gradient flow</td></tr>
+        <tr><td>Anchor-free</td><td>Anchor-based (predefined box shapes)</td><td>Anchor-free — predicts object center directly. More flexible.</td></tr>
+        <tr><td>Loss function</td><td>CIoU loss</td><td>Distribution Focal Loss — better box regression</td></tr>
+        <tr><td>Tasks supported</td><td>Detection only</td><td>Detection + Segmentation + Classification + Pose estimation</td></tr>
+        <tr><td>Python API</td><td>Script-based</td><td>Clean Python API: <code>model = YOLO('yolov8n.pt'); model.train(data='data.yaml')</code></td></tr>
+        <tr><td>Speed (640px)</td><td>~140 fps on GPU</td><td>~170 fps on same GPU</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>YOLO v8 — Data Preparation Requirements</h3>
+  <ul class="sl">
+    <li><strong>Image format:</strong> JPG or PNG, resized to 640×640</li>
+    <li><strong>Annotation format:</strong> YOLO format — one .txt file per image. Each line: <code>class_id center_x center_y width height</code> (all values normalized 0–1)</li>
+    <li><strong>Folder structure:</strong> <code>images/train/</code>, <code>images/val/</code>, <code>labels/train/</code>, <code>labels/val/</code></li>
+    <li><strong>data.yaml file:</strong> Specifies paths and class names</li>
+    <li><strong>Minimum dataset:</strong> At least 100–200 images per class for acceptable results; 1,000+ for good results</li>
+  </ul>
+  <div class="eg">
+    <strong>YOLO v8 Training Code</strong>
+    <code>from ultralytics import YOLO<br>model = YOLO('yolov8n.pt')  # nano model<br>model.train(data='underwater.yaml', epochs=100, imgsz=640, batch=16)<br>results = model.val()<br>model.predict('test_video.mp4', save=True)</code>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     15. ROBOFLOW
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="roboflow">
+  <div class="sec-head">
+    <div class="sec-tag">15</div>
+    <h2 class="sec-title"><em>Roboflow</em> — Computer Vision Platform</h2>
+  </div>
+
+  <p>Roboflow is a <strong>complete computer vision platform</strong> that handles the entire data pipeline — from raw images to a trained, deployable model — without requiring heavy coding knowledge. It is especially used for YOLO, TensorFlow, and PyTorch workflows.</p>
+
+  <div class="eg">
+    <strong>Why Roboflow exists</strong>
+    Building a YOLO dataset from scratch is extremely tedious: manually drawing bounding boxes, converting annotation formats, handling augmentation, managing versions. Roboflow automates all of this into a clean web interface.
+  </div>
+
+  <h3>Complete Roboflow Workflow</h3>
+
+  <div class="step-block"><div class="step-num">1</div><div class="step-body">
+    <h4>Upload Dataset</h4>
+    <p>Upload raw images (JPG, PNG, video frames) directly from your computer, Google Drive, or S3. Roboflow handles any resolution, any size.</p>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">2</div><div class="step-body">
+    <h4>Annotation / Labeling</h4>
+    <p>Use Roboflow's built-in annotation tool:</p>
+    <ul class="sl">
+      <li><strong>Bounding Boxes:</strong> Draw rectangles around objects. Click and drag. Assign class label.</li>
+      <li><strong>Polygons:</strong> For segmentation — trace exact shape of irregular objects.</li>
+      <li><strong>Smart Label (AI-assisted):</strong> Roboflow uses a pre-trained model to auto-draw boxes. You just confirm/correct — saves 60–80% of labeling time.</li>
+      <li><strong>Team collaboration:</strong> Multiple people can annotate the same dataset simultaneously.</li>
+    </ul>
+    <div class="eg"><strong>Annotation format output:</strong>Roboflow can export in YOLO format, COCO JSON, Pascal VOC XML, TFRecord — whatever your model requires.</div>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">3</div><div class="step-body">
+    <h4>Preprocessing</h4>
+    <ul class="sl">
+      <li>Auto-resize all images to target size (e.g., 640×640)</li>
+      <li>Auto-orient (fix EXIF rotation — phones save images rotated)</li>
+      <li>Grayscale conversion if needed</li>
+      <li>Tile large images (useful for drone footage with small objects)</li>
+    </ul>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">4</div><div class="step-body">
+    <h4>Augmentation</h4>
+    <p>Apply augmentations directly in Roboflow with a slider UI — no code needed:</p>
+    <div class="g2">
+      <ul class="sl">
+        <li>Flip (horizontal / vertical)</li>
+        <li>Rotate (±15°, ±90°)</li>
+        <li>Brightness / Exposure adjustment</li>
+      </ul>
+      <ul class="sl">
+        <li>Blur / Noise</li>
+        <li>Crop / Zoom</li>
+        <li>Mosaic augmentation</li>
+      </ul>
+    </div>
+    <p>Roboflow automatically updates annotation coordinates when you flip/rotate — the bounding boxes move with the image.</p>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">5</div><div class="step-body">
+    <h4>Dataset Versioning</h4>
+    <p>Every change creates a new dataset version. You can compare model performance across versions — "did adding 200 more images improve mAP?" — and roll back if needed.</p>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">6</div><div class="step-body">
+    <h4>Train Model</h4>
+    <p>Either: (A) Export dataset in YOLO format and train locally, or (B) Train directly on Roboflow using their hosted training (one click).</p>
+    <div class="eg"><strong>Export + Train code</strong><code>from roboflow import Roboflow<br>rf = Roboflow(api_key="YOUR_KEY")<br>project = rf.workspace().project("underwater-garbage")<br>dataset = project.version(3).download("yolov8")</code></div>
+  </div></div>
+
+  <div class="step-block"><div class="step-num">7</div><div class="step-body">
+    <h4>Deploy</h4>
+    <p>Deploy model via Roboflow's hosted API. Send an image → get back JSON with detected objects, confidence scores, and bounding box coordinates. Works on web, mobile, or embedded devices.</p>
+  </div></div>
+
+  <h3>Applications</h3>
+  <div class="g2">
+    <div class="card"><div class="card-title">🚗 Traffic &amp; Vehicles</div><p>Count and classify vehicles at intersections. Detect traffic violations in real time.</p></div>
+    <div class="card c-cyan"><div class="card-title">🏥 Medical Imaging</div><p>Detect tumors, count cells, identify abnormalities in X-rays and microscope slides.</p></div>
+    <div class="card c-pink"><div class="card-title">🏭 Industrial QC</div><p>Detect manufacturing defects on assembly lines — scratches, dents, missing components — at high speed.</p></div>
+    <div class="card c-amber"><div class="card-title">🔐 Security</div><p>Face detection, intrusion detection, package theft detection in CCTV footage.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     16. WEKA
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="weka">
+  <div class="sec-head">
+    <div class="sec-tag">16</div>
+    <h2 class="sec-title"><em>WEKA</em> — Data Mining Tool</h2>
+  </div>
+
+  <p><strong>WEKA = Waikato Environment for Knowledge Analysis</strong>. It is a collection of machine learning algorithms for data mining tasks, developed at the University of Waikato, New Zealand. It is written in Java and provides a <strong>graphical interface (GUI)</strong> — no coding required to run ML experiments.</p>
+
+  <div class="note">WEKA is widely used in academic research, university courses, and small-scale experiments because it requires no programming — just load your CSV, pick an algorithm, click Run, and see results.</div>
+
+  <h3>Key Features of WEKA</h3>
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">📊 Easy GUI</div>
+      <p>Drag-and-drop interface. Load a dataset, choose an algorithm, set parameters, and evaluate — all through menus and buttons. No Python, no R required.</p>
+    </div>
+    <div class="card c-cyan">
+      <div class="card-title">🧮 Many Algorithms</div>
+      <p>Includes 150+ algorithms: Decision Trees (J48), Naive Bayes, SVM, K-Means, Random Forest, Linear Regression, Neural Networks — all ready to use.</p>
+    </div>
+    <div class="card c-pink">
+      <div class="card-title">🔧 Data Preprocessing</div>
+      <p>Built-in filters for normalisation, discretisation, attribute selection, handling missing values — no external tool needed.</p>
+    </div>
+    <div class="card c-amber">
+      <div class="card-title">📈 Visualisation</div>
+      <p>Scatter plots, decision tree visualiser, ROC curves, confusion matrices — all visualised directly in the app.</p>
+    </div>
+  </div>
+
+  <h3>Four Main WEKA Functions</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Function</th><th>What it does</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Classification</strong></td><td>Predicts categories (discrete output)</td><td>Predict if a patient has diabetes: Yes/No</td></tr>
+        <tr><td><strong>Clustering</strong></td><td>Groups similar records without labels</td><td>Group customers by purchasing behaviour</td></tr>
+        <tr><td><strong>Regression</strong></td><td>Predicts continuous numerical values</td><td>Predict a student's exam score</td></tr>
+        <tr><td><strong>Association Rules</strong></td><td>Find items that appear together frequently</td><td>Market basket: bread + butter + jam often bought together</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>WEKA File Format — ARFF</h3>
+  <p>WEKA uses its own file format called <strong>ARFF (Attribute-Relation File Format)</strong>, but also supports CSV. An ARFF file has a header section (attribute definitions) and a data section.</p>
+  <div class="formula">
+    @RELATION weather<br><br>
+    @ATTRIBUTE outlook  {sunny, overcast, rainy}<br>
+    @ATTRIBUTE temperature  NUMERIC<br>
+    @ATTRIBUTE humidity  NUMERIC<br>
+    @ATTRIBUTE play  {yes, no}<br><br>
+    @DATA<br>
+    sunny, 85, 85, no<br>
+    overcast, 72, 90, yes<br>
+    rainy, 68, 80, no
+  </div>
+
+  <h3>WEKA Workflow</h3>
+  <div class="pipe">
+    <div class="pipe-step"><span class="pipe-num">1</span><span class="pipe-label">Load CSV / ARFF</span></div>
+    <div class="pipe-step"><span class="pipe-num">2</span><span class="pipe-label">Preprocess (filter)</span></div>
+    <div class="pipe-step"><span class="pipe-num">3</span><span class="pipe-label">Choose Algorithm</span></div>
+    <div class="pipe-step"><span class="pipe-num">4</span><span class="pipe-label">Run / Train</span></div>
+    <div class="pipe-step"><span class="pipe-num">5</span><span class="pipe-label">View Results</span></div>
+  </div>
+
+  <div class="card c-cyan">
+    <div class="card-title">WEKA Evaluation Modes</div>
+    <div class="g2">
+      <div>
+        <h4>Train/Test Split</h4>
+        <p>Split data into 70% train / 30% test. Train on first part, evaluate on second. Fast but results depend on the split.</p>
+      </div>
+      <div>
+        <h4>Cross-Validation (10-fold)</h4>
+        <p>Split data into 10 parts. Train on 9 parts, test on 1. Repeat 10 times (each part becomes test once). Average the 10 results. More reliable than single split — the standard for academic experiments.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Limitations of WEKA</h3>
+  <ul class="sl">
+    <li>Not suitable for large-scale datasets (millions of rows) — runs in RAM, limited by Java heap size</li>
+    <li>No GPU support — no deep learning (no CNN, YOLO)</li>
+    <li>Primarily for research/education, not production deployment</li>
+    <li>Less flexible than Python (scikit-learn) for custom pipelines</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     17. HOW TO IMPORT DATASETS
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="datasets">
+  <div class="sec-head">
+    <div class="sec-tag">17</div>
+    <h2 class="sec-title">Ways to <em>Import Datasets</em></h2>
+  </div>
+
+  <p>There are many ways to get data into your ML pipeline. Here are all the methods with code examples.</p>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">1 · CSV / Excel File</div>
+      <div class="formula">import pandas as pd<br>df = pd.read_csv('data.csv')<br>df = pd.read_excel('data.xlsx')</div>
+    </div>
+    <div class="card c-cyan">
+      <div class="card-title">2 · Scikit-learn Built-in Datasets</div>
+      <div class="formula">from sklearn.datasets import (<br>  load_iris,       # flower classification<br>  load_digits,     # handwritten digits<br>  load_boston,     # house prices<br>  make_classification  # synthetic<br>)<br>X, y = load_iris(return_X_y=True)</div>
+    </div>
+    <div class="card c-pink">
+      <div class="card-title">3 · TensorFlow / Keras Datasets</div>
+      <div class="formula">from tensorflow.keras.datasets import mnist, cifar10<br>(X_train, y_train), (X_test, y_test) = mnist.load_data()<br># 60,000 handwritten digit images</div>
+    </div>
+    <div class="card c-amber">
+      <div class="card-title">4 · Kaggle API</div>
+      <div class="formula"># Install: pip install kaggle<br># Set API key in ~/.kaggle/kaggle.json<br>kaggle datasets download -d username/dataset<br>df = pd.read_csv('dataset.csv')</div>
+    </div>
+    <div class="card c-green">
+      <div class="card-title">5 · Roboflow API (Images)</div>
+      <div class="formula">from roboflow import Roboflow<br>rf = Roboflow(api_key="KEY")<br>project = rf.workspace("ws").project("project")<br>dataset = project.version(1).download("yolov8")</div>
+    </div>
+    <div class="card">
+      <div class="card-title">6 · Web API / REST</div>
+      <div class="formula">import requests<br>response = requests.get(<br>  "https://api.example.com/data",<br>  headers={"Authorization": "Bearer TOKEN"}<br>)<br>df = pd.DataFrame(response.json())</div>
+    </div>
+    <div class="card c-cyan">
+      <div class="card-title">7 · SQL Database</div>
+      <div class="formula">import pandas as pd<br>import sqlite3<br>conn = sqlite3.connect('hospital.db')<br>df = pd.read_sql(<br>  "SELECT * FROM patients WHERE age > 40",<br>  conn<br>)</div>
+    </div>
+    <div class="card c-pink">
+      <div class="card-title">8 · HuggingFace Datasets (NLP)</div>
+      <div class="formula">from datasets import load_dataset<br>dataset = load_dataset("imdb")  # movie reviews<br>dataset = load_dataset("squad")  # QA pairs<br>train_data = dataset["train"]</div>
+    </div>
+  </div>
+
+  <div class="note">For your YOLO project specifically: collect images → upload to Roboflow → annotate → export in YOLOv8 format → this gives you the exact folder structure YOLO expects (images/train, images/val, labels/train, labels/val, data.yaml).</div>
+
+  <div style="text-align:center; padding-top:24px;">
+    <a href="#" class="back">↑ Back to top</a>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     18. ML vs DEEP LEARNING (FULL COMPARISON)
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="ml-vs-dl">
+  <div class="sec-head">
+    <div class="sec-tag">18</div>
+    <h2 class="sec-title">Machine Learning <em>vs</em> Deep Learning</h2>
+  </div>
+
+  <p>Machine Learning and Deep Learning are both subfields of AI, but they differ fundamentally in how they learn, what data they need, and what problems they are best at solving. Deep Learning is actually a <strong>subset of Machine Learning</strong> — all Deep Learning is ML, but not all ML is Deep Learning.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>Feature</th><th>Machine Learning</th><th>Deep Learning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Definition</strong></td><td>Algorithms that learn patterns from structured data using human-defined features</td><td>Uses multi-layered neural networks to automatically learn features from raw data</td></tr>
+        <tr><td><strong>Data needed</strong></td><td>Works well on small to medium datasets (hundreds to thousands)</td><td>Needs very large datasets (tens of thousands to millions)</td></tr>
+        <tr><td><strong>Feature engineering</strong></td><td>Manual — humans decide which features to extract and feed to model</td><td>Automatic — model learns its own features from raw input</td></tr>
+        <tr><td><strong>Model complexity</strong></td><td>Simpler models (Decision Tree, SVM, Linear Regression)</td><td>Complex neural networks with many layers (CNN, RNN, LSTM, Transformer)</td></tr>
+        <tr><td><strong>Training speed</strong></td><td>Faster to train — less computation</td><td>Slower — millions of parameters, needs GPU/TPU</td></tr>
+        <tr><td><strong>Hardware</strong></td><td>Runs on regular CPU</td><td>Requires GPU or TPU for practical training times</td></tr>
+        <tr><td><strong>Interpretability</strong></td><td>More interpretable — you can see why a Decision Tree made a decision</td><td>Black box — hard to explain why a 150-layer network made a specific decision</td></tr>
+        <tr><td><strong>Best data type</strong></td><td>Structured data — tables, spreadsheets, CSV files</td><td>Unstructured data — images, audio, video, raw text</td></tr>
+        <tr><td><strong>Performance ceiling</strong></td><td>Plateaus after a certain amount of data — more data doesn't always help</td><td>Keeps improving as you add more data — no plateau</td></tr>
+        <tr><td><strong>Examples</strong></td><td>Spam detection, loan approval, price prediction</td><td>Face recognition, image captioning, speech-to-text, ChatGPT</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-label">Performance vs dataset size — ML plateaus, DL keeps growing</div>
+    <svg viewBox="0 0 580 220" class="ch" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="20" x2="55" y2="185" stroke="#2a2a45" stroke-width="1"/>
+      <line x1="55" y1="185" x2="555" y2="185" stroke="#2a2a45" stroke-width="1"/>
+      <text x="305" y="208" fill="#6b6f90" font-size="10" font-family="JetBrains Mono" text-anchor="middle">Dataset Size →</text>
+      <text x="16" y="110" fill="#6b6f90" font-size="10" font-family="Inter" transform="rotate(-90,16,110)" text-anchor="middle">Performance →</text>
+      <polyline points="55,175 120,130 200,100 290,85 390,80 480,78 555,77"
+        fill="none" stroke="#7c6df0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="55,182 120,170 200,155 290,125 390,90 480,58 555,35"
+        fill="none" stroke="#22d9c5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7,3"/>
+      <text x="430" y="73" fill="#a99cf5" font-size="11" font-family="Inter" font-weight="500">Machine Learning</text>
+      <text x="430" y="32" fill="#22d9c5" font-size="11" font-family="Inter" font-weight="500">Deep Learning</text>
+      <text x="60" y="175" fill="#6b6f90" font-size="10" font-family="JetBrains Mono">Small</text>
+      <text x="270" y="200" fill="#6b6f90" font-size="10" font-family="JetBrains Mono">Medium</text>
+      <text x="490" y="200" fill="#6b6f90" font-size="10" font-family="JetBrains Mono">Large</text>
+    </svg>
+  </div>
+
+  <h3>When to use ML vs Deep Learning</h3>
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">Use Machine Learning when:</div>
+      <ul class="sl">
+        <li>Your dataset is small or medium (under 100,000 rows)</li>
+        <li>Data is structured — tables, CSVs, numerical features</li>
+        <li>You need fast training and quick results</li>
+        <li>You need to explain model decisions (e.g., bank loan denial)</li>
+        <li>You have limited compute — no GPU available</li>
+        <li>Examples: fraud detection, price prediction, churn prediction</li>
+      </ul>
+    </div>
+    <div class="card c-cyan">
+      <div class="card-title">Use Deep Learning when:</div>
+      <ul class="sl">
+        <li>Data is unstructured — images, audio, video, raw text</li>
+        <li>You have a very large dataset (100,000+ examples)</li>
+        <li>You need state-of-the-art accuracy and have GPU resources</li>
+        <li>Manual feature engineering is impractical (e.g., identifying objects in photos)</li>
+        <li>Examples: image recognition, speech synthesis, language translation, YOLO object detection</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="eg">
+    <strong>Real example — same problem, two approaches</strong>
+    Problem: predict if a customer will cancel their subscription (churn).
+    ML approach: take structured features (age, plan type, usage hours, last login date) → train Random Forest → 85% accuracy in minutes on a laptop.
+    DL approach: overkill here — a neural network on structured tabular data rarely beats ML and takes far more data and compute. DL shines when the input is raw pixels, audio waves, or raw text that has no hand-crafted features.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     19. SVM & RANDOM FOREST
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="svm-rf">
+  <div class="sec-head">
+    <div class="sec-tag">19</div>
+    <h2 class="sec-title">SVM &amp; <em>Random Forest</em></h2>
+  </div>
+
+  <h3>SVM — Support Vector Machine</h3>
+  <p>SVM is a supervised learning algorithm that finds the <strong>best possible boundary (called a hyperplane) that separates two classes</strong> with the maximum margin between them. The data points closest to the boundary are called <em>support vectors</em> — they are the ones that define where the boundary goes.</p>
+
+  <div class="eg">
+    <strong>Simple analogy</strong>
+    Imagine you have red dots and blue dots scattered on paper. You need to draw a line that separates them. Many lines could separate them — SVM finds the one line that is farthest from both groups at the same time. This maximum-margin line is the most robust — even if new data points appear slightly off, they'll still land on the correct side.
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-label">SVM — maximum margin hyperplane between two classes</div>
+    <svg viewBox="0 0 520 200" class="ch" xmlns="http://www.w3.org/2000/svg">
+      <line x1="260" y1="10" x2="260" y2="190" stroke="#7c6df0" stroke-width="2" stroke-dasharray="0"/>
+      <line x1="210" y1="10" x2="210" y2="190" stroke="#7c6df0" stroke-width="1" stroke-dasharray="5,4" opacity=".5"/>
+      <line x1="310" y1="10" x2="310" y2="190" stroke="#7c6df0" stroke-width="1" stroke-dasharray="5,4" opacity=".5"/>
+      <rect x="210" y="10" width="100" height="180" fill="rgba(124,109,240,.06)" rx="0"/>
+      <text x="260" y="105" fill="#a99cf5" font-size="10" font-family="JetBrains Mono" text-anchor="middle">margin</text>
+      <text x="260" y="188" fill="#7c6df0" font-size="10" font-family="JetBrains Mono" text-anchor="middle">hyperplane</text>
+      <circle cx="80"  cy="50"  r="8" fill="rgba(240,101,164,.8)"/>
+      <circle cx="120" cy="90"  r="8" fill="rgba(240,101,164,.8)"/>
+      <circle cx="60"  cy="130" r="8" fill="rgba(240,101,164,.8)"/>
+      <circle cx="140" cy="60"  r="8" fill="rgba(240,101,164,.8)"/>
+      <circle cx="100" cy="150" r="8" fill="rgba(240,101,164,.8)"/>
+      <circle cx="155" cy="110" r="9" fill="none" stroke="#f065a4" stroke-width="2.5"/>
+      <circle cx="155" cy="110" r="5" fill="rgba(240,101,164,.8)"/>
+      <text x="162" y="98" fill="#f59cc8" font-size="10" font-family="Inter">support</text>
+      <text x="162" y="110" fill="#f59cc8" font-size="10" font-family="Inter">vector</text>
+      <circle cx="380" cy="60"  r="8" fill="rgba(34,217,197,.8)"/>
+      <circle cx="420" cy="100" r="8" fill="rgba(34,217,197,.8)"/>
+      <circle cx="360" cy="140" r="8" fill="rgba(34,217,197,.8)"/>
+      <circle cx="450" cy="70"  r="8" fill="rgba(34,217,197,.8)"/>
+      <circle cx="400" cy="155" r="8" fill="rgba(34,217,197,.8)"/>
+      <circle cx="365" cy="90"  r="9" fill="none" stroke="#22d9c5" stroke-width="2.5"/>
+      <circle cx="365" cy="90"  r="5" fill="rgba(34,217,197,.8)"/>
+      <text x="320" y="78" fill="#22d9c5" font-size="10" font-family="Inter">support</text>
+      <text x="320" y="90" fill="#22d9c5" font-size="10" font-family="Inter">vector</text>
+      <text x="100" y="185" fill="#f59cc8" font-size="11" font-family="Inter" font-weight="500">Class A (e.g. Cat)</text>
+      <text x="370" y="185" fill="#22d9c5" font-size="11" font-family="Inter" font-weight="500">Class B (e.g. Dog)</text>
+    </svg>
+  </div>
+
+  <h3>Key SVM Concepts</h3>
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">Hyperplane</div>
+      <p>The decision boundary that separates classes. In 2D it's a line. In 3D it's a plane. In higher dimensions it's called a hyperplane. SVM finds the hyperplane that maximises the margin — the gap between the two classes.</p>
+    </div>
+    <div class="card c-cyan">
+      <div class="card-title">Support Vectors</div>
+      <p>The data points from each class that are closest to the hyperplane. These are the "critical" points — if you removed all other points and kept only the support vectors, the hyperplane would be exactly the same. They define the margin.</p>
+    </div>
+    <div class="card c-pink">
+      <div class="card-title">Kernel Trick</div>
+      <p>When data is not linearly separable (you can't draw a straight line through it), SVM uses a kernel function to map the data into a higher dimension where a hyperplane CAN separate it.</p>
+      <div class="eg"><strong>Example</strong>Imagine red and blue dots arranged in concentric circles — no straight line separates them. The RBF (Radial Basis Function) kernel maps them to 3D where a flat plane can separate the inner circle from the outer one.</div>
+    </div>
+    <div class="card c-amber">
+      <div class="card-title">SVM Requirements (from your notes)</div>
+      <ul class="sl">
+        <li>Clean numerical data — no missing values</li>
+        <li>Feature scaling essential — all features must be in the same range</li>
+        <li>Sensitive to outliers — one wrong point near the boundary shifts it</li>
+        <li>Sensitive to irrelevant features — always do feature selection first</li>
+      </ul>
+    </div>
+  </div>
+  <div class="eg">
+    <strong>Real-world use cases</strong>
+    Face detection (is this a face or not?). Medical diagnosis (is this tumour malignant or benign?). Text classification (is this review positive or negative?). Handwriting recognition.
+  </div>
+
+  <h3>Random Forest</h3>
+  <p>Random Forest is an <strong>ensemble learning method</strong> that builds many Decision Trees and combines their predictions. Instead of relying on one tree (which can overfit), it trains hundreds of trees on different random subsets of data and takes the majority vote as the final answer.</p>
+
+  <div class="flow">
+    <div class="flow-row">
+      <div class="flow-box" style="border-color:var(--p);">📊 <strong>Full Dataset</strong></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Random Sample 1<br><small>random rows + features</small></div>
+      <div class="flow-arrow">+</div>
+      <div class="flow-box">Random Sample 2<br><small>different rows + features</small></div>
+      <div class="flow-arrow">+</div>
+      <div class="flow-box">Random Sample N<br><small>…and so on</small></div>
+    </div>
+    <div class="flow-down">↓ each sample trains one tree</div>
+    <div class="flow-row">
+      <div class="flow-box">Tree 1<br><small>→ "Cat"</small></div>
+      <div class="flow-arrow" style="font-size:.9rem;">+</div>
+      <div class="flow-box">Tree 2<br><small>→ "Cat"</small></div>
+      <div class="flow-arrow" style="font-size:.9rem;">+</div>
+      <div class="flow-box">Tree 3<br><small>→ "Dog"</small></div>
+      <div class="flow-arrow" style="font-size:.9rem;">+</div>
+      <div class="flow-box">Tree N<br><small>→ "Cat"</small></div>
+    </div>
+    <div class="flow-down">↓ majority vote</div>
+    <div class="flow-row">
+      <div class="flow-box" style="border-color:var(--green); flex:none; padding:14px 40px;"><strong style="color:var(--green);">Final Answer: "Cat" ✓</strong></div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">Why Random Forest beats a single Decision Tree</div>
+      <ul class="sl">
+        <li>A single tree overfits — memorises training noise</li>
+        <li>Each tree in the forest sees different random rows and features → each tree is different</li>
+        <li>Averaging 500 imperfect trees is far more accurate and robust than one "perfect" tree</li>
+        <li>This averaging effect is called <strong>bagging</strong> (Bootstrap Aggregating)</li>
+      </ul>
+    </div>
+    <div class="card c-cyan">
+      <div class="card-title">Random Forest advantages</div>
+      <ul class="sl">
+        <li>Very accurate on tabular/structured data</li>
+        <li>Resistant to overfitting</li>
+        <li>Handles missing values reasonably well</li>
+        <li>Gives feature importance scores — you can see which features matter most</li>
+        <li>Works for both classification AND regression</li>
+      </ul>
+    </div>
+  </div>
+  <div class="eg">
+    <strong>Real example</strong>
+    A hospital wants to predict if a patient will be readmitted within 30 days. Features: age, diagnosis, number of previous admissions, medication count, blood pressure. A single Decision Tree might overfit to training patients. Random Forest with 300 trees averages out the noise → more reliable prediction for new patients it has never seen.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     20. OVERFITTING & UNDERFITTING
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="overfitting">
+  <div class="sec-head">
+    <div class="sec-tag">20</div>
+    <h2 class="sec-title">Overfitting <em>&amp;</em> Underfitting</h2>
+  </div>
+
+  <p>These are the two most common accuracy problems in machine learning. Every model you train will fall somewhere on the spectrum between underfitting and overfitting. The goal is the sweet spot in the middle — <strong>good generalisation</strong>.</p>
+
+  <div class="g2">
+    <div class="card c-red">
+      <div class="card-title">🔴 Overfitting</div>
+      <p>The model is <strong>too perfect on training data but fails on new/unseen data</strong>. It has memorised the training set — including its noise and random quirks — instead of learning the actual underlying pattern.</p>
+      <p><strong>Training accuracy:</strong> Very high (98–100%)</p>
+      <p><strong>Test/validation accuracy:</strong> Much lower (60–70%)</p>
+      <div class="eg"><strong>Analogy</strong>A student who memorises every practice exam answer word-for-word. In the real exam, questions are phrased differently — the student fails because they memorised, not understood.</div>
+      <h4>Causes of Overfitting</h4>
+      <ul class="sl">
+        <li>Too many training epochs — model memorises every sample</li>
+        <li>Model is too complex (too many layers/neurons) for the amount of data</li>
+        <li>Dataset is too small</li>
+        <li>Duplicate data in training set</li>
+        <li>No regularisation applied</li>
+      </ul>
+      <h4>How to Fix Overfitting</h4>
+      <ul class="sl">
+        <li><strong>More data:</strong> Collect more training samples or use augmentation</li>
+        <li><strong>Early stopping:</strong> Stop training when validation loss stops improving</li>
+        <li><strong>Dropout:</strong> Randomly turn off neurons during training — forces model not to rely on any single neuron</li>
+        <li><strong>Weight decay / L2 regularisation:</strong> Penalises very large weights — keeps model simpler</li>
+        <li><strong>Remove duplicates:</strong> Clean training data</li>
+        <li><strong>Reduce model complexity:</strong> Fewer layers, fewer neurons</li>
+      </ul>
+    </div>
+    <div class="card c-amber">
+      <div class="card-title">🟡 Underfitting</div>
+      <p>The model performs poorly <strong>on both training data AND test data</strong>. It has not learned enough — the model is too simple to capture the patterns in the data.</p>
+      <p><strong>Training accuracy:</strong> Low (50–60%)</p>
+      <p><strong>Test accuracy:</strong> Also low (similar to training)</p>
+      <div class="eg"><strong>Analogy</strong>A student who didn't study at all. Fails every exam — both the ones they practised on and the real one. They haven't learned anything.</div>
+      <h4>Causes of Underfitting</h4>
+      <ul class="sl">
+        <li>Too few training epochs — model hasn't learned yet</li>
+        <li>Model too simple (e.g., using Linear Regression for a complex non-linear problem)</li>
+        <li>Learning rate too high — model jumps over the solution</li>
+        <li>Too much regularisation — model was constrained too much</li>
+        <li>Too few features — not enough input information</li>
+      </ul>
+      <h4>How to Fix Underfitting</h4>
+      <ul class="sl">
+        <li><strong>Train longer:</strong> More epochs</li>
+        <li><strong>Use a more complex model:</strong> More layers or neurons</li>
+        <li><strong>Reduce regularisation:</strong> Less dropout, less weight decay</li>
+        <li><strong>Better features:</strong> Add more informative input features</li>
+        <li><strong>Lower learning rate:</strong> More precise weight updates</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-label">Training vs validation loss — spotting overfitting vs underfitting</div>
+    <svg viewBox="0 0 580 230" class="ch" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="20" x2="55" y2="190" stroke="#2a2a45" stroke-width="1"/>
+      <line x1="55" y1="190" x2="555" y2="190" stroke="#2a2a45" stroke-width="1"/>
+      <text x="305" y="212" fill="#6b6f90" font-size="10" font-family="JetBrains Mono" text-anchor="middle">Epochs →</text>
+      <text x="16" y="110" fill="#6b6f90" font-size="10" font-family="Inter" transform="rotate(-90,16,110)" text-anchor="middle">Loss ↓</text>
+      <polyline points="55,170 120,130 190,100 270,78 360,62 450,55 555,52"
+        fill="none" stroke="#7c6df0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="55,175 120,140 190,115 270,98 360,95 450,105 555,122"
+        fill="none" stroke="#f065a4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7,3"/>
+      <line x1="355" y1="20" x2="355" y2="190" stroke="#f5c542" stroke-width="1.5" stroke-dasharray="4,4"/>
+      <text x="360" y="35" fill="#f5c542" font-size="10" font-family="Inter">sweet spot</text>
+      <text x="360" y="47" fill="#f5c542" font-size="10" font-family="Inter">stop here</text>
+      <text x="80"  y="185" fill="#ffbe5c" font-size="10" font-family="Inter">← underfitting zone</text>
+      <text x="420" y="185" fill="#ff9aae" font-size="10" font-family="Inter">overfitting zone →</text>
+      <line x1="60"  y1="215" x2="85"  y2="215" stroke="#7c6df0" stroke-width="2.5"/>
+      <text x="90"  y="219" fill="#a99cf5" font-size="10" font-family="Inter">Training loss</text>
+      <line x1="210" y1="215" x2="235" y2="215" stroke="#f065a4" stroke-width="2" stroke-dasharray="6,3"/>
+      <text x="240" y="219" fill="#f59cc8" font-size="10" font-family="Inter">Validation loss</text>
+    </svg>
+  </div>
+
+  <div class="note">Exam tip from your pptx Slide 20: "A student uses only training data, gets very high accuracy but fails on new data" — the answer is: No Data Splitting → Overfitting. The model never saw any held-out data during training so it just memorised everything.</div>
+
+  <h3>Weight Decay (L2 Regularisation)</h3>
+  <p>Weight decay is a hyperparameter that prevents overfitting by <strong>adding a penalty to the loss function for having large weight values</strong>. Large weights = complex model = overfitting. Weight decay pushes weights toward zero, keeping the model simpler.</p>
+  <div class="formula">Loss with weight decay = original loss + λ × (sum of all weights²)</div>
+  <p>λ (lambda) is the weight decay coefficient. Typical values: 0.0001 to 0.01. The higher it is, the more aggressively the model is prevented from growing complex.</p>
+
+  <h3>Dropout</h3>
+  <p>During training, dropout randomly sets a fraction of neurons to zero on each forward pass. This forces the network to learn redundant representations — no single neuron can be relied upon, so the whole network becomes more robust.</p>
+  <div class="eg"><strong>Example</strong>A team where every member can do every task is more robust than a team where one person does everything. If that one person is sick (dropped out), the team fails. Dropout trains every neuron to be useful.</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     21. RNN & LSTM
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="rnn-lstm">
+  <div class="sec-head">
+    <div class="sec-tag">21</div>
+    <h2 class="sec-title">RNN &amp; <em>LSTM</em></h2>
+  </div>
+
+  <p>RNN and LSTM are deep learning models designed specifically for <strong>sequential data</strong> — data where the order matters and where earlier elements affect the meaning of later ones. Examples: sentences, time series, speech, music, video frames.</p>
+
+  <div class="note">CNN processes data spatially (looks at regions of an image simultaneously). RNN/LSTM processes data <em>temporally</em> — one step at a time, remembering what came before.</div>
+
+  <h3>RNN — Recurrent Neural Network</h3>
+  <p>In a regular neural network, each input is processed independently. RNN adds a <strong>loop</strong> — the output from the previous step is fed back as input to the current step. This gives the network a form of <em>memory</em> called the hidden state.</p>
+
+  <div class="flow">
+    <div class="flow-row">
+      <div class="flow-box" style="font-size:.82rem;">Input: "I"<br><small>hidden state = h0</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="font-size:.82rem;">Input: "love"<br><small>+ h1 from previous</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="font-size:.82rem;">Input: "AI"<br><small>+ h2 from previous</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:var(--green); font-size:.82rem;"><strong>Output</strong><br><small>uses all context</small></div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">RNN — Key properties</div>
+      <ul class="sl">
+        <li>Processes one input at a time, in order</li>
+        <li>Maintains a hidden state that carries information from previous steps</li>
+        <li>Good for short sequences (up to ~20–50 steps)</li>
+        <li>Struggles with long sequences — the hidden state "forgets" early information (vanishing gradient problem)</li>
+      </ul>
+    </div>
+    <div class="card c-pink">
+      <div class="card-title">RNN — Use cases</div>
+      <ul class="sl">
+        <li>Next word prediction (autocomplete)</li>
+        <li>Stock price forecasting (time series)</li>
+        <li>Music generation</li>
+        <li>Sentiment analysis on short reviews</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>LSTM — Long Short-Term Memory</h3>
+  <p>LSTM is an advanced version of RNN that solves the forgetting problem. It uses <strong>three gates</strong> to carefully control what information to keep, what to forget, and what to output — allowing it to remember context across very long sequences.</p>
+
+  <div class="card c-green">
+    <div class="card-title">The 3 LSTM Gates — explained simply</div>
+    <div class="step-block"><div class="step-num">1</div><div class="step-body">
+      <h4>Forget Gate</h4>
+      <p>Looks at the current input and previous hidden state. Decides what information from the old memory should be <em>thrown away</em>.</p>
+      <div class="eg"><strong>Example</strong>You're reading a paragraph. When a new subject is introduced ("The president..."), the forget gate discards information about the previous subject. You no longer need to remember what "the dog" was doing from earlier.</div>
+    </div></div>
+    <div class="step-block"><div class="step-num">2</div><div class="step-body">
+      <h4>Input Gate</h4>
+      <p>Decides what new information from the current input should be <em>added</em> to long-term memory.</p>
+      <div class="eg"><strong>Example</strong>Reading "Barack Obama was born in Hawaii." The input gate adds "subject=Obama, birthplace=Hawaii" to memory because this information will likely be needed later.</div>
+    </div></div>
+    <div class="step-block"><div class="step-num">3</div><div class="step-body">
+      <h4>Output Gate</h4>
+      <p>Decides what part of the current memory cell state to <em>output</em> as the hidden state for this step.</p>
+    </div></div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Feature</th><th>RNN</th><th>LSTM</th></tr></thead>
+      <tbody>
+        <tr><td>Memory</td><td>Short-term only — forgets quickly</td><td>Long-term AND short-term memory</td></tr>
+        <tr><td>Sequence length</td><td>Good for short sequences (≤50 steps)</td><td>Good for long sequences (hundreds of steps)</td></tr>
+        <tr><td>Vanishing gradient</td><td>Severe problem — early inputs lose influence</td><td>Solved by gate architecture</td></tr>
+        <tr><td>Complexity</td><td>Simpler, fewer parameters</td><td>More complex, more parameters</td></tr>
+        <tr><td>Training speed</td><td>Faster</td><td>Slower</td></tr>
+        <tr><td>Use when</td><td>Short text, simple time series</td><td>Long text, machine translation, speech recognition</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="eg">
+    <strong>Real example — Machine Translation (Google Translate)</strong>
+    Translating "The animal didn't cross the street because it was too tired" — what does "it" refer to? The animal or the street? An RNN forgets "animal" by the time it reaches "it". An LSTM remembers "animal" from the beginning and correctly translates "it" as referring to the animal.
+  </div>
+
+  <h3>Data Preparation for RNN/LSTM</h3>
+  <ul class="sl">
+    <li><strong>Large datasets needed:</strong> Like CNN, LSTM needs lots of examples to learn long-range dependencies</li>
+    <li><strong>Normalise input:</strong> Scale all numerical inputs to similar range (especially for time series)</li>
+    <li><strong>Padding:</strong> Sequences of different lengths must be padded to the same length before batching</li>
+    <li><strong>Less manual feature engineering:</strong> LSTM automatically learns temporal features — you don't manually extract "trend", "seasonality" etc.</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     22. DATA INTEGRATION (STEP 3)
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="integration">
+  <div class="sec-head">
+    <div class="sec-tag">22</div>
+    <h2 class="sec-title">Data Integration — <em>Step 3 of Data Preparation</em></h2>
+  </div>
+
+  <p>Data Integration is the process of <strong>combining data from multiple different sources into one unified dataset</strong>. Real-world AI projects rarely have all the data in one place — you pull from databases, APIs, manually collected files, and external datasets.</p>
+
+  <div class="note">More diverse data from multiple sources = the model learns more varied patterns = better generalisation on real-world inputs it hasn't seen.</div>
+
+  <h3>Why Integration is needed</h3>
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">Problem — data is siloed</div>
+      <p>Patient records are in a hospital database. Lab results are in a different system. Doctor notes are in scanned PDFs. Wearable data (heart rate) is from an IoT API. All four sources together give a complete picture of a patient's health — no single source alone is sufficient.</p>
+    </div>
+    <div class="card c-cyan">
+      <div class="card-title">Solution — merge into one dataset</div>
+      <p>Combine all sources on a common key (e.g., patient_id). After integration you have one rich table where each row represents a complete patient record with all features from all sources.</p>
+    </div>
+  </div>
+
+  <h3>Types of Data Integration</h3>
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">Horizontal Integration (more rows)</div>
+      <p>Combine datasets that have the same columns but different records. Merge your training images + external Kaggle dataset + manually collected images. Result: more training examples of the same type.</p>
+      <div class="eg"><strong>Example from pptx</strong>Training dataset (500 images) + Validation dataset (100 images) + External open-source dataset (2,000 images) → merged into one 2,600-image training pool.</div>
+    </div>
+    <div class="card c-pink">
+      <div class="card-title">Vertical Integration (more columns/features)</div>
+      <p>Combine datasets that have different columns but the same records. Join customer purchase history with their demographic data on customer_id. Result: richer features per record.</p>
+    </div>
+  </div>
+
+  <h3>Challenges in Data Integration</h3>
+  <ul class="sl">
+    <li><strong>Schema conflicts:</strong> Source A calls it "customer_id", Source B calls it "cust_no" — same thing, different names. Must standardise.</li>
+    <li><strong>Duplicate records:</strong> The same customer appears in both databases. Must deduplicate after merging.</li>
+    <li><strong>Missing values introduced:</strong> Some records exist in Source A but not Source B. Handle with imputation or removal.</li>
+    <li><strong>Different formats:</strong> Dates as "22-04-2026" in one source, "April 22 2026" in another. Standardise before merging.</li>
+  </ul>
+
+  <div class="formula">Model Impact: More diverse data → better generalization → higher accuracy on real-world data</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     23. DATA SPLITTING (STEP 7)
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="splitting">
+  <div class="sec-head">
+    <div class="sec-tag">23</div>
+    <h2 class="sec-title">Data Splitting — <em>Step 7 of Data Preparation</em></h2>
+  </div>
+
+  <p>Data splitting means <strong>dividing your full dataset into separate subsets</strong> — training, validation, and test — before any model training begins. This is critical because it allows you to evaluate how well the model will perform on data it has <em>never seen before</em>.</p>
+
+  <div class="warn">If you train on ALL your data and then test on the same data, you get artificially high accuracy — the model already knows the answers. This is like giving a student the exam paper before the exam. Data splitting prevents this.</div>
+
+  <div class="chart-box">
+    <div class="chart-label">Standard data split ratios</div>
+    <svg viewBox="0 0 560 80" class="ch" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10"  y="20" width="336" height="44" rx="6" fill="rgba(124,109,240,.6)"/>
+      <text x="178" y="47" fill="#fff" font-size="13" font-family="Inter" text-anchor="middle" font-weight="500">Training Set — 70–80%</text>
+      <rect x="350" y="20" width="100" height="44" rx="6" fill="rgba(240,101,164,.6)"/>
+      <text x="400" y="47" fill="#fff" font-size="12" font-family="Inter" text-anchor="middle" font-weight="500">Test — 10–15%</text>
+      <rect x="455" y="20" width="95"  height="44" rx="6" fill="rgba(34,217,197,.6)"/>
+      <text x="502" y="47" fill="#0d2e2a" font-size="12" font-family="Inter" text-anchor="middle" font-weight="500">Val — 10–15%</text>
+    </svg>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">Training Set (70–80%)</div>
+      <p>The model <strong>learns</strong> from this data. Weights are updated based only on training set examples. The model sees this data many times (once per epoch).</p>
+      <div class="eg"><strong>Analogy</strong>The textbook and practice problems the student studies from during the semester.</div>
+    </div>
+    <div class="card c-cyan">
+      <div class="card-title">Validation Set (10–15%)</div>
+      <p>Used <strong>during training</strong> to monitor performance and tune hyperparameters. The model does NOT learn from this — no weight updates happen. It tells you whether the model is overfitting.</p>
+      <div class="eg"><strong>Analogy</strong>Mock exams during the semester. The student doesn't learn from them directly, but uses results to adjust study strategy.</div>
+    </div>
+    <div class="card c-pink">
+      <div class="card-title">Test Set (10–15%)</div>
+      <p>Used <strong>only once</strong> — after training is completely finished — to get the final unbiased performance estimate. The model has NEVER seen this data. This number is what you report as model accuracy.</p>
+      <div class="eg"><strong>Analogy</strong>The real final exam. Completely new questions the student has never seen. This is the true measure of whether they learned.</div>
+    </div>
+  </div>
+
+  <h3>Why separate Validation from Test?</h3>
+  <p>If you use the test set to tune hyperparameters (e.g., "test accuracy was 75%, let me adjust learning rate, now it's 80%..."), you are indirectly training on the test set. It is no longer "unseen" data. The validation set absorbs this tuning, keeping the test set truly clean.</p>
+
+  <h3>Stratified Splitting</h3>
+  <p>When splitting, use <strong>stratified sampling</strong> to ensure each split has the same proportion of each class as the original dataset.</p>
+  <div class="eg"><strong>Example</strong>Original dataset: 70% cats, 30% dogs. With stratified split, training set is also 70% cats / 30% dogs. Without stratification, by random chance your training set might be 90% cats — and the model never properly learns dogs.</div>
+  <div class="formula">from sklearn.model_selection import train_test_split<br>X_train, X_test, y_train, y_test = train_test_split(<br>  X, y, test_size=0.2, random_state=42, stratify=y<br>)</div>
+
+  <div class="note">Model impact from pptx: Ensures fair evaluation. Testing on unseen data tells you how the model will actually perform in the real world — not how well it memorised training data.</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     24. DATA PREP FOR DIFFERENT MODEL TYPES
+═══════════════════════════════════════════════════ -->
+<section class="sec" id="data-per-model">
+  <div class="sec-head">
+    <div class="sec-tag">24</div>
+    <h2 class="sec-title">Data Preparation for <em>Different AI Models</em></h2>
+  </div>
+
+  <p>Different AI model types have different data requirements. Using the wrong data preparation for a model type is a leading cause of poor performance. This section (directly from your pptx Slides 11–14) maps each model type to exactly what it needs.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>Model Type</th><th>Examples</th><th>Data Requirements</th><th>Sensitive to</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ML Models</strong></td>
+          <td>Linear Regression, Decision Tree, SVM, Random Forest</td>
+          <td>Clean numerical data · No missing values · Feature scaling (critical for SVM, KNN) · Encoded categories</td>
+          <td>Outliers · Irrelevant features · Class imbalance</td>
+        </tr>
+        <tr>
+          <td><strong>Deep Learning (CNN)</strong></td>
+          <td>Image classification, YOLO</td>
+          <td>Large datasets (1,000+ images per class) · Normalised pixels [0,1] · Same image size · Data augmentation · Less manual feature engineering</td>
+          <td>Small datasets (use augmentation) · Incorrect labels</td>
+        </tr>
+        <tr>
+          <td><strong>Deep Learning (RNN/LSTM)</strong></td>
+          <td>Text generation, speech, time series</td>
+          <td>Large sequence datasets · Normalised numerical values · Padded sequences (same length) · Tokenized text</td>
+          <td>Very long sequences without LSTM · Unscaled values</td>
+        </tr>
+        <tr>
+          <td><strong>Computer Vision (YOLO)</strong></td>
+          <td>Object detection, tracking</td>
+          <td>Images resized to 640×640 · Bounding box annotations per object · Augmentation (flip, rotate) · Balanced classes</td>
+          <td>Incorrect bounding boxes · Class imbalance · Blurry images</td>
+        </tr>
+        <tr>
+          <td><strong>NLP Models</strong></td>
+          <td>Chatbots, Sentiment Analysis, Translation</td>
+          <td>Tokenisation · Stopword removal · Stemming/Lemmatisation · Vectorisation (TF-IDF or embeddings)</td>
+          <td>Noisy raw text · Inconsistent casing · Domain-specific vocabulary</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Detailed breakdown — what each model needs</h3>
+
+  <div class="card">
+    <div class="card-title">1 · Machine Learning Models (Structured Data)</div>
+    <div class="g2">
+      <div>
+        <h4>Must have</h4>
+        <ul class="sl">
+          <li>All missing values handled (fill or drop)</li>
+          <li>All text columns encoded (Label or One-Hot)</li>
+          <li>Feature scaling — especially for SVM and KNN (both are distance-based, so unscaled features dominate)</li>
+          <li>Outliers removed or capped</li>
+          <li>Irrelevant features removed</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Why feature scaling is critical for SVM</h4>
+        <p>SVM finds a hyperplane based on distances between points. If Feature A has values 0–1 and Feature B has values 0–100,000, Feature B will completely dominate the distance calculation and Feature A becomes invisible to the model.</p>
+        <div class="eg"><strong>Fix</strong>Apply StandardScaler or MinMaxScaler before training SVM — brings all features to the same scale.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c-cyan">
+    <div class="card-title">2 · Deep Learning Models (CNN, RNN, LSTM)</div>
+    <ul class="sl">
+      <li><strong>Large datasets required</strong> — DL models have millions of parameters. With small data they overfit immediately. Use augmentation to artificially grow dataset.</li>
+      <li><strong>Normalised input</strong> — pixel values divided by 255 for images; numerical features scaled to [0,1] or standardised</li>
+      <li><strong>Data augmentation</strong> — flip, rotate, zoom, brightness changes to increase diversity</li>
+      <li><strong>Less manual feature engineering</strong> — DL models (especially CNN and LSTM) automatically learn features from raw input. You don't need to manually extract "edges" or "trends" — the model learns these internally.</li>
+    </ul>
+  </div>
+
+  <div class="card c-pink">
+    <div class="card-title">3 · YOLO — Computer Vision Object Detection</div>
+    <ul class="sl">
+      <li><strong>Image resizing:</strong> All images must be exactly 640×640 pixels</li>
+      <li><strong>Annotation:</strong> Every object in every image must have a bounding box (x, y, width, height) and a class label</li>
+      <li><strong>Data augmentation:</strong> Flip, rotate to increase variety — YOLO auto-adjusts bounding box coordinates with Roboflow</li>
+      <li><strong>Class balance:</strong> If "plastic bottle" has 1,000 images and "metal can" has 50, the model will miss metal cans. Balance with oversampling/augmentation of minority class.</li>
+    </ul>
+    <div class="eg">
+      <strong>Your underwater garbage project — common causes of low mAP</strong>
+      Blurry underwater images → fix: collect sharper images, add noise augmentation so model learns to handle blur.
+      Incorrect annotations → fix: re-annotate carefully in Roboflow, use Smart Label + manual verification.
+      Class imbalance (more plastic, less metal) → fix: augment minority classes more aggressively.
+    </div>
+  </div>
+
+  <div class="card c-amber">
+    <div class="card-title">4 · NLP Models (Chatbots, Sentiment Analysis)</div>
+    <ul class="sl">
+      <li><strong>Tokenisation:</strong> Split raw text into words or subwords</li>
+      <li><strong>Stopword removal:</strong> Remove "is", "the", "a" — they add noise not signal</li>
+      <li><strong>Stemming / Lemmatisation:</strong> Reduce "running", "ran", "runs" to "run" so model treats them as the same concept</li>
+      <li><strong>Vectorisation:</strong> Convert tokens to numbers — BoW, TF-IDF, or word embeddings (Word2Vec, BERT)</li>
+      <li><strong>No image resizing or bounding boxes needed</strong> — completely different pipeline from CV models</li>
+    </ul>
+  </div>
+
+  <div style="text-align:center; padding-top:24px;">
+    <a href="#" class="back">↑ Back to top</a>
+  </div>
+
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  AI &amp; Machine Learning Complete Study Guide · Compiled from lecture notes (22 Apr – 29 Apr 2026) + AI Final Notes + Data Preparation slides
+  <br>Topics: CNN · RNN &amp; LSTM · YOLO v8 · Roboflow · Data Preparation (all 7 steps) · Text Preprocessing · Labeling · Encoding · Normalization · SMOTE · Augmentation · Hyperparameter Tuning · Evaluation Metrics · Datasets · Types of ML · SVM · Random Forest · Overfitting &amp; Underfitting · Data Integration · Data Splitting · Data Prep per Model Type · ML vs Deep Learning · WEKA
+</footer>
+
+</body>
+</html>
